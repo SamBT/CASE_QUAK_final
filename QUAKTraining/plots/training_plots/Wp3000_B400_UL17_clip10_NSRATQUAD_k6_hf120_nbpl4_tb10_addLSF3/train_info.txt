@@ -1,2 +1,0 @@
-Loss: 11.631551742553711
-Params: {"flow_type": "NSRATQUAD", "tail_bound": 10, "hidden_features": 120, "num_layers": 6, "num_blocks_per_layer": 4, "clip": 10, "patience": 20, "learning_rate": 5e-05, "save_model": true, "bs": 10000, "add_lsf3": true}
