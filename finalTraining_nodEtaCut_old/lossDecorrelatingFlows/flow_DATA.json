@@ -1,0 +1,9 @@
+{
+    "flow_type": "NSRATQUAD",
+    "tail_bound": 15,
+    "hidden_features": 100,
+    "num_layers": 3,
+    "num_bins": 40,
+    "num_blocks_per_layer": 3,
+    "tails": "linear"
+}

@@ -1,0 +1,671 @@
+{
+    "Qstar2000_W170": {
+        "d_eta_eff": 0.6772209200576378,
+        "preselection_eff": 0.7575088596246712,
+        "preselection_eff_JER_down": 0.7568120549588575,
+        "preselection_eff_JER_up": 0.7574614812923895,
+        "preselection_eff_JES_down": 0.7555586126148648,
+        "preselection_eff_JES_up": 0.7588204702344212
+    },
+    "Qstar2000_W25": {
+        "d_eta_eff": 0.6688551328756339,
+        "preselection_eff": 0.7646564528401569,
+        "preselection_eff_JER_down": 0.7639713212994241,
+        "preselection_eff_JER_up": 0.7645045874865019,
+        "preselection_eff_JES_down": 0.7625941401047097,
+        "preselection_eff_JES_up": 0.7661196899205024
+    },
+    "Qstar2000_W400": {
+        "d_eta_eff": 0.6927329005411205,
+        "preselection_eff": 0.7390335988612139,
+        "preselection_eff_JER_down": 0.7380406933053338,
+        "preselection_eff_JER_up": 0.7388128398555874,
+        "preselection_eff_JES_down": 0.735672118420488,
+        "preselection_eff_JES_up": 0.7407712877323671
+    },
+    "Qstar2000_W80": {
+        "d_eta_eff": 0.6704071695284589,
+        "preselection_eff": 0.7627793796636805,
+        "preselection_eff_JER_down": 0.7620161831282138,
+        "preselection_eff_JER_up": 0.7627535218524997,
+        "preselection_eff_JES_down": 0.7606831540915417,
+        "preselection_eff_JES_up": 0.7640373449816045
+    },
+    "Qstar3000_W170": {
+        "d_eta_eff": 0.6397355954909765,
+        "preselection_eff": 0.8444157058185994,
+        "preselection_eff_JER_down": 0.843925869446679,
+        "preselection_eff_JER_up": 0.8445028437916144,
+        "preselection_eff_JES_down": 0.843228792220879,
+        "preselection_eff_JES_up": 0.8452176602843857
+    },
+    "Qstar3000_W25": {
+        "d_eta_eff": 0.6397442808487342,
+        "preselection_eff": 0.8460426324590403,
+        "preselection_eff_JER_down": 0.8456264662307241,
+        "preselection_eff_JER_up": 0.8460013997470422,
+        "preselection_eff_JES_down": 0.8448994193457429,
+        "preselection_eff_JES_up": 0.846673140158645
+    },
+    "Qstar3000_W400": {
+        "d_eta_eff": 0.6449063682444387,
+        "preselection_eff": 0.8432775884368308,
+        "preselection_eff_JER_down": 0.8427974597036098,
+        "preselection_eff_JER_up": 0.8432546522018834,
+        "preselection_eff_JES_down": 0.8418895550448052,
+        "preselection_eff_JES_up": 0.8440983930702056
+    },
+    "Qstar3000_W80": {
+        "d_eta_eff": 0.6370931295827037,
+        "preselection_eff": 0.8446565178328262,
+        "preselection_eff_JER_down": 0.8442345952986644,
+        "preselection_eff_JER_up": 0.8447467798069652,
+        "preselection_eff_JES_down": 0.8434946189984429,
+        "preselection_eff_JES_up": 0.8453683395081268
+    },
+    "Qstar5000_W170": {
+        "d_eta_eff": 0.6186310361356643,
+        "preselection_eff": 0.8862100478616739,
+        "preselection_eff_JER_down": 0.8859537818665574,
+        "preselection_eff_JER_up": 0.8861675842153,
+        "preselection_eff_JES_down": 0.8853770871874181,
+        "preselection_eff_JES_up": 0.8866495316155691
+    },
+    "Qstar5000_W25": {
+        "d_eta_eff": 0.6184650719547,
+        "preselection_eff": 0.8889579759773366,
+        "preselection_eff_JER_down": 0.8887194221572888,
+        "preselection_eff_JER_up": 0.8890044541007839,
+        "preselection_eff_JES_down": 0.8882097089900206,
+        "preselection_eff_JES_up": 0.8894817114035044
+    },
+    "Qstar5000_W400": {
+        "d_eta_eff": 0.6185001836170758,
+        "preselection_eff": 0.8876725281954301,
+        "preselection_eff_JER_down": 0.8872229087460759,
+        "preselection_eff_JER_up": 0.8875627253792802,
+        "preselection_eff_JES_down": 0.8867293902266493,
+        "preselection_eff_JES_up": 0.8881046254941871
+    },
+    "Qstar5000_W80": {
+        "d_eta_eff": 0.618616361483575,
+        "preselection_eff": 0.88991873573625,
+        "preselection_eff_JER_down": 0.8894545206047892,
+        "preselection_eff_JER_up": 0.8898405036828535,
+        "preselection_eff_JES_down": 0.8889546722068405,
+        "preselection_eff_JES_up": 0.890334741742465
+    },
+    "Wkk2000_R170": {
+        "d_eta_eff": 0.617801669590473,
+        "preselection_eff": 0.6171150239894375,
+        "preselection_eff_JER_down": 0.6160586270456578,
+        "preselection_eff_JER_up": 0.6170275596950202,
+        "preselection_eff_JES_down": 0.6145864676422914,
+        "preselection_eff_JES_up": 0.6186159594689034
+    },
+    "Wkk2000_R400": {
+        "d_eta_eff": 0.6459554018383599,
+        "preselection_eff": 0.5515166519548432,
+        "preselection_eff_JER_down": 0.5502207939412391,
+        "preselection_eff_JER_up": 0.5514660848280606,
+        "preselection_eff_JES_down": 0.5478405138398801,
+        "preselection_eff_JES_up": 0.5537536439265313
+    },
+    "Wkk3000_R170": {
+        "d_eta_eff": 0.5589826213105653,
+        "preselection_eff": 0.7495746383962874,
+        "preselection_eff_JER_down": 0.7488447302532732,
+        "preselection_eff_JER_up": 0.7496711274388339,
+        "preselection_eff_JES_down": 0.7479910502015219,
+        "preselection_eff_JES_up": 0.7505855550430368
+    },
+    "Wkk3000_R400": {
+        "d_eta_eff": 0.5736800742537379,
+        "preselection_eff": 0.7196536130074537,
+        "preselection_eff_JER_down": 0.7186732054115066,
+        "preselection_eff_JER_up": 0.7197055970676843,
+        "preselection_eff_JES_down": 0.7176702029950218,
+        "preselection_eff_JES_up": 0.7207837733134524
+    },
+    "Wkk5000_R170": {
+        "d_eta_eff": 0.5318642106187828,
+        "preselection_eff": 0.8170426164136282,
+        "preselection_eff_JER_down": 0.8168102820802569,
+        "preselection_eff_JER_up": 0.8173612842325936,
+        "preselection_eff_JES_down": 0.8161370182105552,
+        "preselection_eff_JES_up": 0.8180095373067748
+    },
+    "Wkk5000_R400": {
+        "d_eta_eff": 0.5351457634533254,
+        "preselection_eff": 0.805091576640127,
+        "preselection_eff_JER_down": 0.8047223734799333,
+        "preselection_eff_JER_up": 0.8052299876976111,
+        "preselection_eff_JES_down": 0.8040486542684034,
+        "preselection_eff_JES_up": 0.8060460161708253
+    },
+    "Wp2000_B170_T170": {
+        "d_eta_eff": 0.6436723339039607,
+        "preselection_eff": 0.759704743710133,
+        "preselection_eff_JER_down": 0.7588834011499235,
+        "preselection_eff_JER_up": 0.7591435848565805,
+        "preselection_eff_JES_down": 0.7573220638474412,
+        "preselection_eff_JES_up": 0.7607516152844547
+    },
+    "Wp2000_B25_T170": {
+        "d_eta_eff": 0.6680083367521049,
+        "preselection_eff": 0.724314976501417,
+        "preselection_eff_JER_down": 0.723145272841553,
+        "preselection_eff_JER_up": 0.7236946176933908,
+        "preselection_eff_JES_down": 0.7197843538853735,
+        "preselection_eff_JES_up": 0.726800857937335
+    },
+    "Wp2000_B400_T170": {
+        "d_eta_eff": 0.6717678685380455,
+        "preselection_eff": 0.7168933638565606,
+        "preselection_eff_JER_down": 0.7156194532208413,
+        "preselection_eff_JER_up": 0.7161692827063039,
+        "preselection_eff_JES_down": 0.7118329242472388,
+        "preselection_eff_JES_up": 0.7197490322314686
+    },
+    "Wp2000_B80_T170": {
+        "d_eta_eff": 0.6661499260785534,
+        "preselection_eff": 0.7333762846093255,
+        "preselection_eff_JER_down": 0.7322827283132118,
+        "preselection_eff_JER_up": 0.732720678880053,
+        "preselection_eff_JES_down": 0.7292913135251327,
+        "preselection_eff_JES_up": 0.7359172169457281
+    },
+    "Wp3000_B170_T170": {
+        "d_eta_eff": 0.586538215456206,
+        "preselection_eff": 0.860318027299428,
+        "preselection_eff_JER_down": 0.8597638510189585,
+        "preselection_eff_JER_up": 0.8598899322203629,
+        "preselection_eff_JES_down": 0.8591291349463993,
+        "preselection_eff_JES_up": 0.8603704969175315
+    },
+    "Wp3000_B25_T170": {
+        "d_eta_eff": 0.6204969133399567,
+        "preselection_eff": 0.8761773534210443,
+        "preselection_eff_JER_down": 0.8757200081130302,
+        "preselection_eff_JER_up": 0.8759105147732132,
+        "preselection_eff_JES_down": 0.8746920709218641,
+        "preselection_eff_JES_up": 0.8767880779971576
+    },
+    "Wp3000_B400_T170": {
+        "d_eta_eff": 0.5944942511596313,
+        "preselection_eff": 0.8641443208366586,
+        "preselection_eff_JER_down": 0.863448085201022,
+        "preselection_eff_JER_up": 0.8637238699165763,
+        "preselection_eff_JES_down": 0.8624064419422768,
+        "preselection_eff_JES_up": 0.8644685465112889
+    },
+    "Wp3000_B80_T170": {
+        "d_eta_eff": 0.6100010372047532,
+        "preselection_eff": 0.8732535602148543,
+        "preselection_eff_JER_down": 0.8726462679218534,
+        "preselection_eff_JER_up": 0.8728498583495325,
+        "preselection_eff_JES_down": 0.8717770440374492,
+        "preselection_eff_JES_up": 0.8736838957070947
+    },
+    "Wp5000_B170_T170": {
+        "d_eta_eff": 0.5733257900005517,
+        "preselection_eff": 0.7780596281924582,
+        "preselection_eff_JER_down": 0.777849465749137,
+        "preselection_eff_JER_up": 0.7780157810540352,
+        "preselection_eff_JES_down": 0.7770542723149755,
+        "preselection_eff_JES_up": 0.7786797232296426
+    },
+    "Wp5000_B25_T170": {
+        "d_eta_eff": 0.6000542922461979,
+        "preselection_eff": 0.8525810763486614,
+        "preselection_eff_JER_down": 0.8521661844264642,
+        "preselection_eff_JER_up": 0.8524389007387189,
+        "preselection_eff_JES_down": 0.8514950765423785,
+        "preselection_eff_JES_up": 0.8530216214364637
+    },
+    "Wp5000_B400_T170": {
+        "d_eta_eff": 0.5708580937908276,
+        "preselection_eff": 0.8123182288632996,
+        "preselection_eff_JER_down": 0.8119593048685325,
+        "preselection_eff_JER_up": 0.8121200727279632,
+        "preselection_eff_JES_down": 0.8112234198285779,
+        "preselection_eff_JES_up": 0.8130517663639839
+    },
+    "Wp5000_B80_T170": {
+        "d_eta_eff": 0.5912272038841417,
+        "preselection_eff": 0.8365993523707835,
+        "preselection_eff_JER_down": 0.8362723637521161,
+        "preselection_eff_JER_up": 0.8364497221737004,
+        "preselection_eff_JES_down": 0.8356093050958401,
+        "preselection_eff_JES_up": 0.8370588666031138
+    },
+    "XYY2000_Y170_Yp400": {
+        "d_eta_eff": 0.8074427478503968,
+        "preselection_eff": 0.9475043962481006,
+        "preselection_eff_JER_down": 0.9472260024637373,
+        "preselection_eff_JER_up": 0.9472926890187391,
+        "preselection_eff_JES_down": 0.9466201081309592,
+        "preselection_eff_JES_up": 0.9477060242887014
+    },
+    "XYY2000_Y25_Yp25": {
+        "d_eta_eff": 0.792366872152987,
+        "preselection_eff": 0.9605601880678889,
+        "preselection_eff_JER_down": 0.9605352858726257,
+        "preselection_eff_JER_up": 0.9605328550084538,
+        "preselection_eff_JES_down": 0.9604622331781411,
+        "preselection_eff_JES_up": 0.9605914668945112
+    },
+    "XYY2000_Y25_Yp80": {
+        "d_eta_eff": 0.7919942043106919,
+        "preselection_eff": 0.9605755820431925,
+        "preselection_eff_JER_down": 0.9605360618883249,
+        "preselection_eff_JER_up": 0.9605485400035187,
+        "preselection_eff_JES_down": 0.9605131900676969,
+        "preselection_eff_JES_up": 0.9606396782636737
+    },
+    "XYY2000_Y400_Yp170": {
+        "d_eta_eff": 0.7778655610256029,
+        "preselection_eff": 0.926693015478277,
+        "preselection_eff_JER_down": 0.9262551994380932,
+        "preselection_eff_JER_up": 0.9262489115830835,
+        "preselection_eff_JES_down": 0.9255354944137989,
+        "preselection_eff_JES_up": 0.9269421824189192
+    },
+    "XYY2000_Y400_Yp25": {
+        "d_eta_eff": 0.7746768965552066,
+        "preselection_eff": 0.930934758299329,
+        "preselection_eff_JER_down": 0.9305258063421417,
+        "preselection_eff_JER_up": 0.9306192632329725,
+        "preselection_eff_JES_down": 0.9299251360794416,
+        "preselection_eff_JES_up": 0.9312750920555579
+    },
+    "XYY2000_Y400_Yp400": {
+        "d_eta_eff": 0.7972039489421017,
+        "preselection_eff": 0.8441449843044102,
+        "preselection_eff_JER_down": 0.843199828595624,
+        "preselection_eff_JER_up": 0.8440773910761123,
+        "preselection_eff_JES_down": 0.8380512954075654,
+        "preselection_eff_JES_up": 0.8487444512826103
+    },
+    "XYY2000_Y400_Yp80": {
+        "d_eta_eff": 0.7731608543419903,
+        "preselection_eff": 0.9281313265761791,
+        "preselection_eff_JER_down": 0.9277095142627477,
+        "preselection_eff_JER_up": 0.9277425949229346,
+        "preselection_eff_JES_down": 0.9270852817492187,
+        "preselection_eff_JES_up": 0.9284198896468633
+    },
+    "XYY2000_Y80_Yp170": {
+        "d_eta_eff": 0.7895864903272212,
+        "preselection_eff": 0.9585777725993153,
+        "preselection_eff_JER_down": 0.9584386167428957,
+        "preselection_eff_JER_up": 0.9584712995827602,
+        "preselection_eff_JES_down": 0.958430026575255,
+        "preselection_eff_JES_up": 0.9585403276185355
+    },
+    "XYY2000_Y80_Yp400": {
+        "d_eta_eff": 0.8109157099647187,
+        "preselection_eff": 0.9533924856116375,
+        "preselection_eff_JER_down": 0.9531457632458805,
+        "preselection_eff_JER_up": 0.9533039309623198,
+        "preselection_eff_JES_down": 0.9528678732239659,
+        "preselection_eff_JES_up": 0.9536871647851657
+    },
+    "XYY2000_Y80_Yp80": {
+        "d_eta_eff": 0.7891015363085534,
+        "preselection_eff": 0.959479792751765,
+        "preselection_eff_JER_down": 0.9594088145042128,
+        "preselection_eff_JER_up": 0.9594202299119371,
+        "preselection_eff_JES_down": 0.9593842354834466,
+        "preselection_eff_JES_up": 0.9594553354350098
+    },
+    "XYY2000_Y170_Yp170": {
+        "d_eta_eff": 0.784245563233995,
+        "preselection_eff": 0.9531759176282429,
+        "preselection_eff_JER_down": 0.9530910966246814,
+        "preselection_eff_JER_up": 0.9531026372313872,
+        "preselection_eff_JES_down": 0.9530269990381705,
+        "preselection_eff_JES_up": 0.9531908093133984
+    },
+    "XYY2000_Y170_Yp25": {
+        "d_eta_eff": 0.7832339591048698,
+        "preselection_eff": 0.9537397277752111,
+        "preselection_eff_JER_down": 0.9536888150371804,
+        "preselection_eff_JER_up": 0.9537188526204939,
+        "preselection_eff_JES_down": 0.9537017558967168,
+        "preselection_eff_JES_up": 0.9537640127209797
+    },
+    "XYY2000_Y170_Yp80": {
+        "d_eta_eff": 0.7828402611812527,
+        "preselection_eff": 0.9544048023941232,
+        "preselection_eff_JER_down": 0.9542650456460253,
+        "preselection_eff_JER_up": 0.9542691070587046,
+        "preselection_eff_JES_down": 0.9542008670751309,
+        "preselection_eff_JES_up": 0.9543407574043942
+    },
+    "XYY2000_Y25_Yp400": {
+        "d_eta_eff": 0.808947622378133,
+        "preselection_eff": 0.9555467809367503,
+        "preselection_eff_JER_down": 0.9552919551066745,
+        "preselection_eff_JER_up": 0.9554088954571357,
+        "preselection_eff_JES_down": 0.9548230699441582,
+        "preselection_eff_JES_up": 0.9558334134018807
+    },
+    "XYY2000_Y80_Yp25": {
+        "d_eta_eff": 0.7881720784677951,
+        "preselection_eff": 0.9585509244730601,
+        "preselection_eff_JER_down": 0.9585097795638474,
+        "preselection_eff_JER_up": 0.9585175212417072,
+        "preselection_eff_JES_down": 0.958486005124342,
+        "preselection_eff_JES_up": 0.9585664149969191
+    },
+    "XYY3000_Y170_Yp170": {
+        "d_eta_eff": 0.7728297136787483,
+        "preselection_eff": 0.967295602145623,
+        "preselection_eff_JER_down": 0.9672747114179315,
+        "preselection_eff_JER_up": 0.9672737755278183,
+        "preselection_eff_JES_down": 0.9672660036208858,
+        "preselection_eff_JES_up": 0.967271267237222
+    },
+    "XYY3000_Y170_Yp25": {
+        "d_eta_eff": 0.7725336703045774,
+        "preselection_eff": 0.9684160219077018,
+        "preselection_eff_JER_down": 0.968404689188851,
+        "preselection_eff_JER_up": 0.9684195072654682,
+        "preselection_eff_JES_down": 0.9684108056839011,
+        "preselection_eff_JES_up": 0.9684195072654682
+    },
+    "XYY3000_Y25_Yp25": {
+        "d_eta_eff": 0.7796887573444201,
+        "preselection_eff": 0.9697513185873187,
+        "preselection_eff_JER_down": 0.9697547808395091,
+        "preselection_eff_JER_up": 0.9697547808395091,
+        "preselection_eff_JES_down": 0.969752979471009,
+        "preselection_eff_JES_up": 0.9697687177087932
+    },
+    "XYY3000_Y25_Yp400": {
+        "d_eta_eff": 0.785037767267355,
+        "preselection_eff": 0.9686540724129395,
+        "preselection_eff_JER_down": 0.9685722441998236,
+        "preselection_eff_JER_up": 0.9686026450892262,
+        "preselection_eff_JES_down": 0.9685389951661378,
+        "preselection_eff_JES_up": 0.9686383302945593
+    },
+    "XYY3000_Y25_Yp80": {
+        "d_eta_eff": 0.7774259674042863,
+        "preselection_eff": 0.9685734610731368,
+        "preselection_eff_JER_down": 0.9685821581082552,
+        "preselection_eff_JER_up": 0.9685734610731368,
+        "preselection_eff_JES_down": 0.9685647640380184,
+        "preselection_eff_JES_up": 0.9685734610731368
+    },
+    "XYY3000_Y400_Yp170": {
+        "d_eta_eff": 0.7582036918113023,
+        "preselection_eff": 0.9626079537395742,
+        "preselection_eff_JER_down": 0.9625242199069322,
+        "preselection_eff_JER_up": 0.9625398785336957,
+        "preselection_eff_JES_down": 0.962387138727095,
+        "preselection_eff_JES_up": 0.9626245634588493
+    },
+    "XYY3000_Y400_Yp25": {
+        "d_eta_eff": 0.7571044310733256,
+        "preselection_eff": 0.9629343870621121,
+        "preselection_eff_JER_down": 0.9628493118222268,
+        "preselection_eff_JER_up": 0.9628799575371709,
+        "preselection_eff_JES_down": 0.9628073617958153,
+        "preselection_eff_JES_up": 0.9628982090909558
+    },
+    "XYY3000_Y400_Yp400": {
+        "d_eta_eff": 0.7634842095936822,
+        "preselection_eff": 0.9623468831220003,
+        "preselection_eff_JER_down": 0.9622162100149192,
+        "preselection_eff_JER_up": 0.9622571444006792,
+        "preselection_eff_JES_down": 0.9620723448648829,
+        "preselection_eff_JES_up": 0.9623417756719508
+    },
+    "XYY3000_Y80_Yp25": {
+        "d_eta_eff": 0.7772836693230563,
+        "preselection_eff": 0.9682069583922372,
+        "preselection_eff_JER_down": 0.9681877918989257,
+        "preselection_eff_JER_up": 0.9682025417482025,
+        "preselection_eff_JES_down": 0.9681912262334886,
+        "preselection_eff_JES_up": 0.9682025417482025
+    },
+    "XYY3000_Y80_Yp400": {
+        "d_eta_eff": 0.7814711056233404,
+        "preselection_eff": 0.9682018445996261,
+        "preselection_eff_JER_down": 0.9681652345659515,
+        "preselection_eff_JER_up": 0.9681922454230893,
+        "preselection_eff_JES_down": 0.9681251637439068,
+        "preselection_eff_JES_up": 0.9682087139677478
+    },
+    "XYY3000_Y170_Yp400": {
+        "d_eta_eff": 0.7804574769961178,
+        "preselection_eff": 0.9682867481495017,
+        "preselection_eff_JER_down": 0.9681752057828154,
+        "preselection_eff_JER_up": 0.9681830235514954,
+        "preselection_eff_JES_down": 0.9681474072182079,
+        "preselection_eff_JES_up": 0.9682275325150324
+    },
+    "XYY3000_Y170_Yp80": {
+        "d_eta_eff": 0.7708962420035744,
+        "preselection_eff": 0.9677317527033176,
+        "preselection_eff_JER_down": 0.9677212924814008,
+        "preselection_eff_JER_up": 0.9677151814188683,
+        "preselection_eff_JES_down": 0.9677212924814008,
+        "preselection_eff_JES_up": 0.9677212924814008
+    },
+    "XYY3000_Y25_Yp170": {
+        "d_eta_eff": 0.7793053380405325,
+        "preselection_eff": 0.9685015643957346,
+        "preselection_eff_JER_down": 0.9684858945004626,
+        "preselection_eff_JER_up": 0.9684951490415965,
+        "preselection_eff_JES_down": 0.9684858945004626,
+        "preselection_eff_JES_up": 0.9685003491917422
+    },
+    "XYY3000_Y400_Yp80": {
+        "d_eta_eff": 0.7576823331204068,
+        "preselection_eff": 0.9630248907612942,
+        "preselection_eff_JER_down": 0.9629581282297295,
+        "preselection_eff_JER_up": 0.9629930983845157,
+        "preselection_eff_JES_down": 0.9628797408950187,
+        "preselection_eff_JES_up": 0.9630325876885242
+    },
+    "XYY3000_Y80_Yp170": {
+        "d_eta_eff": 0.7744958141521403,
+        "preselection_eff": 0.9684571057855019,
+        "preselection_eff_JER_down": 0.9684412475418331,
+        "preselection_eff_JER_up": 0.9684534541916187,
+        "preselection_eff_JES_down": 0.968447350866726,
+        "preselection_eff_JES_up": 0.9684621427396229
+    },
+    "XYY3000_Y80_Yp80": {
+        "d_eta_eff": 0.7784815242733686,
+        "preselection_eff": 0.9694208260596531,
+        "preselection_eff_JER_down": 0.9694103540191985,
+        "preselection_eff_JER_up": 0.9694113638821732,
+        "preselection_eff_JES_down": 0.969405164474506,
+        "preselection_eff_JES_up": 0.9694261085554151
+    },
+    "XYY5000_Y170_Yp170": {
+        "d_eta_eff": 0.7703655280124896,
+        "preselection_eff": 0.9642429003828107,
+        "preselection_eff_JER_down": 0.9642377203400564,
+        "preselection_eff_JER_up": 0.9642377203400564,
+        "preselection_eff_JES_down": 0.9642290162629993,
+        "preselection_eff_JES_up": 0.9642377203400564
+    },
+    "XYY5000_Y170_Yp80": {
+        "d_eta_eff": 0.7712436511462639,
+        "preselection_eff": 0.9652553714027751,
+        "preselection_eff_JER_down": 0.9652553714027751,
+        "preselection_eff_JER_up": 0.9652553714027751,
+        "preselection_eff_JES_down": 0.9652553714027751,
+        "preselection_eff_JES_up": 0.9652553714027751
+    },
+    "XYY5000_Y25_Yp170": {
+        "d_eta_eff": 0.7713931154664371,
+        "preselection_eff": 0.9664182042280832,
+        "preselection_eff_JER_down": 0.9664043252238445,
+        "preselection_eff_JER_up": 0.9664095041636627,
+        "preselection_eff_JES_down": 0.9664095041636627,
+        "preselection_eff_JES_up": 0.9664269042925037
+    },
+    "XYY5000_Y25_Yp25": {
+        "d_eta_eff": 0.7697265174545804,
+        "preselection_eff": 0.9697773621702479,
+        "preselection_eff_JER_down": 0.9697721514810069,
+        "preselection_eff_JER_up": 0.969766940791766,
+        "preselection_eff_JES_down": 0.969766940791766,
+        "preselection_eff_JES_up": 0.969766940791766
+    },
+    "XYY5000_Y25_Yp400": {
+        "d_eta_eff": 0.7726392938624869,
+        "preselection_eff": 0.9665684081011017,
+        "preselection_eff_JER_down": 0.9665719307536026,
+        "preselection_eff_JER_up": 0.9665719307536026,
+        "preselection_eff_JES_down": 0.9665719307536026,
+        "preselection_eff_JES_up": 0.9665945366587377
+    },
+    "XYY5000_Y25_Yp80": {
+        "d_eta_eff": 0.772128792798863,
+        "preselection_eff": 0.9675852408015978,
+        "preselection_eff_JER_down": 0.967567806878389,
+        "preselection_eff_JER_up": 0.9675765238399934,
+        "preselection_eff_JES_down": 0.9675590899167843,
+        "preselection_eff_JES_up": 0.967567806878389
+    },
+    "XYY5000_Y400_Yp170": {
+        "d_eta_eff": 0.7645271485454337,
+        "preselection_eff": 0.9619582340218351,
+        "preselection_eff_JER_down": 0.9619582340218351,
+        "preselection_eff_JER_up": 0.961964325920662,
+        "preselection_eff_JES_down": 0.9619529872725394,
+        "preselection_eff_JES_up": 0.9619677882237061
+    },
+    "XYY5000_Y400_Yp25": {
+        "d_eta_eff": 0.7623780910765443,
+        "preselection_eff": 0.9645762444231082,
+        "preselection_eff_JER_down": 0.9645657759799994,
+        "preselection_eff_JER_up": 0.9645657759799994,
+        "preselection_eff_JES_down": 0.9645605693523647,
+        "preselection_eff_JES_up": 0.9645779511163834
+    },
+    "XYY5000_Y400_Yp400": {
+        "d_eta_eff": 0.7626443784871276,
+        "preselection_eff": 0.9627565727252947,
+        "preselection_eff_JER_down": 0.9627166994404074,
+        "preselection_eff_JER_up": 0.9627341174992341,
+        "preselection_eff_JES_down": 0.9627115132005685,
+        "preselection_eff_JES_up": 0.9627619548541788
+    },
+    "XYY5000_Y80_Yp25": {
+        "d_eta_eff": 0.7713421142528109,
+        "preselection_eff": 0.9659292524991792,
+        "preselection_eff_JER_down": 0.9659292524991792,
+        "preselection_eff_JER_up": 0.9659292524991792,
+        "preselection_eff_JES_down": 0.9659231622777552,
+        "preselection_eff_JES_up": 0.9659379462957898
+    },
+    "XYY5000_Y80_Yp400": {
+        "d_eta_eff": 0.7736055099013759,
+        "preselection_eff": 0.9652243724064448,
+        "preselection_eff_JER_down": 0.9652243724064448,
+        "preselection_eff_JER_up": 0.9652156527098694,
+        "preselection_eff_JES_down": 0.9651982133167188,
+        "preselection_eff_JES_up": 0.9652243724064448
+    },
+    "XYY5000_Y170_Yp25": {
+        "d_eta_eff": 0.7679665539159586,
+        "preselection_eff": 0.9668145496627635,
+        "preselection_eff_JER_down": 0.9668092919411385,
+        "preselection_eff_JER_up": 0.9668092919411385,
+        "preselection_eff_JES_down": 0.9668092919411385,
+        "preselection_eff_JES_up": 0.9668092919411385
+    },
+    "XYY5000_Y170_Yp400": {
+        "d_eta_eff": 0.7713081673905936,
+        "preselection_eff": 0.9629769022745112,
+        "preselection_eff_JER_down": 0.9629769022745112,
+        "preselection_eff_JER_up": 0.9629856090604875,
+        "preselection_eff_JES_down": 0.9629769022745112,
+        "preselection_eff_JES_up": 0.9629856090604875
+    },
+    "XYY5000_Y400_Yp80": {
+        "d_eta_eff": 0.7624380469385714,
+        "preselection_eff": 0.9635572204260834,
+        "preselection_eff_JER_down": 0.9635450195325538,
+        "preselection_eff_JER_up": 0.9635467702423895,
+        "preselection_eff_JES_down": 0.9635363200586957,
+        "preselection_eff_JES_up": 0.9635520279547115
+    },
+    "XYY5000_Y80_Yp170": {
+        "d_eta_eff": 0.7697662577483323,
+        "preselection_eff": 0.9649876187876011,
+        "preselection_eff_JER_down": 0.9649876187876011,
+        "preselection_eff_JER_up": 0.9649876187876011,
+        "preselection_eff_JES_down": 0.9649876187876011,
+        "preselection_eff_JES_up": 0.9649876187876011
+    },
+    "XYY5000_Y80_Yp80": {
+        "d_eta_eff": 0.7733802868514044,
+        "preselection_eff": 0.9652564031988751,
+        "preselection_eff_JER_down": 0.9652564031988751,
+        "preselection_eff_JER_up": 0.9652503125762136,
+        "preselection_eff_JES_down": 0.9652512267598989,
+        "preselection_eff_JES_up": 0.9652564031988751
+    },
+    "YHH2000_H400": {
+        "d_eta_eff": 0.8988942896171855,
+        "preselection_eff": 0.8241667820495971,
+        "preselection_eff_JER_down": 0.8235952912397405,
+        "preselection_eff_JER_up": 0.8244737187941146,
+        "preselection_eff_JES_down": 0.8201181214697187,
+        "preselection_eff_JES_up": 0.827698689172544
+    },
+    "YHH3000_H400": {
+        "d_eta_eff": 0.8786622410007426,
+        "preselection_eff": 0.9660537749891532,
+        "preselection_eff_JER_down": 0.9659363303618757,
+        "preselection_eff_JER_up": 0.9660824958173527,
+        "preselection_eff_JES_down": 0.9656111662437522,
+        "preselection_eff_JES_up": 0.966334862074313
+    },
+    "YHH5000_H400": {
+        "d_eta_eff": 0.871612037970667,
+        "preselection_eff": 0.96050508073249,
+        "preselection_eff_JER_down": 0.9604717164822794,
+        "preselection_eff_JER_up": 0.9605028514352312,
+        "preselection_eff_JES_down": 0.9604023360070122,
+        "preselection_eff_JES_up": 0.9605883007894691
+    },
+    "ZTT2000_Tp400": {
+        "d_eta_eff": 0.7547262851845163,
+        "preselection_eff": 0.43981470582292775,
+        "preselection_eff_JER_down": 0.4384949390030911,
+        "preselection_eff_JER_up": 0.4398660455804895,
+        "preselection_eff_JES_down": 0.43397334337187227,
+        "preselection_eff_JES_up": 0.44440566002105625
+    },
+    "ZTT3000_Tp400": {
+        "d_eta_eff": 0.662643699526195,
+        "preselection_eff": 0.7313121303965994,
+        "preselection_eff_JER_down": 0.7300771633612718,
+        "preselection_eff_JER_up": 0.7307162192584561,
+        "preselection_eff_JES_down": 0.7279225599652247,
+        "preselection_eff_JES_up": 0.7328838182525118
+    },
+    "ZTT5000_Tp400": {
+        "d_eta_eff": 0.65762167942936,
+        "preselection_eff": 0.7485222149462022,
+        "preselection_eff_JER_down": 0.7479000305010632,
+        "preselection_eff_JER_up": 0.7482919164640514,
+        "preselection_eff_JES_down": 0.7465703924426977,
+        "preselection_eff_JES_up": 0.7496843495171921
+    },
+    "BKG": {
+        "n_tot": 24025215,
+        "n_sel": 7440870,
+        "d_eta_eff": 0.3097108600276834
+    }
+}
