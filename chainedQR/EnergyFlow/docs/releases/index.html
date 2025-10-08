@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Patrick T. Komiske III, Eric M. Metodiev">
+  <link rel="canonical" href="https://energyflow.network/releases/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Release Notes - EnergyFlow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../css/eftheme.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Release Notes";
+    var mkdocs_page_input_path = "releases.md";
+    var mkdocs_page_url = "/releases/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-122962541-1', 'energyflow.network');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+  <a href="..">
+    <div class="eflogo">
+      <img src="../img/eflogowhite.png"  class="eflogo-img"> EnergyFlow
+    </div>
+  </a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../demos/">Demos</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../faqs/">FAQs</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#13x">1.3.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12x">1.2.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#11x">1.1.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10x">1.0.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#013x">0.13.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#012x">0.12.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#011x">0.11.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#010x">0.10.x</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#09x">&lt;0.9.x</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../news/">News</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/archs/">Architectures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/datasets/">Datasets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/emd/">EMD</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/efm/">Energy Flow Moments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/efp/">Energy Flow Polynomials</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/measures/">Measures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/gen/">Multigraph Generation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/obs/">Observables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/utils/">Utils</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">EnergyFlow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Getting Started &raquo;</li>
+        
+      
+    
+    <li>Release Notes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="release-notes">Release Notes</h1>
+<h2 id="13x">1.3.x</h2>
+<p><strong>1.3.2</strong></p>
+<ul>
+<li>Fixed typo in <code>MODDataset</code> code that caused <code>abs_gen_jet_y</code> and <code>abs_get_jet_eta</code> to be invalid selectors.</li>
+</ul>
+<p>*<em>1.3.1</em></p>
+<ul>
+<li>Added <code>mass</code> option to <code>ptyphims_from_p4s</code> to mirror <code>ptyphims_from_pjs</code>.</li>
+</ul>
+<p><strong>1.3.0</strong></p>
+<ul>
+<li>EMD module now uses Wasserstein package for optimal transport computations by default. This should yield some speed and stability improvements while being mostly transparent to the user.</li>
+<li>EMD Demo updated to use Wasserstein package for EMD computation and correlation dimension calculation.</li>
+<li><code>remap_pids</code> now works on arrays of events (rather than arrays of padded events only.)</li>
+</ul>
+<h2 id="12x">1.2.x</h2>
+<p><strong>1.2.0</strong></p>
+<ul>
+<li>Keras is now imported via Tensorflow.</li>
+<li>Added the ability to concatenate global features directly into the F funciton of an EFN/PFN model. See the <code>num_global_features</code> option of the EFN/PFN models.</li>
+<li>In list of tensors in EFN/PFN models, changed how input tensors are listed in order to produce a flattened list.</li>
+<li>Modified internals so that DNN and EFN/PFN models use the same code to construct fully-connected network fragments.</li>
+</ul>
+<h2 id="11x">1.1.x</h2>
+<p><strong>1.1.3</strong></p>
+<ul>
+<li>Added <code>phi_ref</code> option to <code>ptyphims_from_pjs</code>.</li>
+<li>Simplified <code>pjs_from_ptyphims</code> to use <code>fastjet.PtYPhiM</code>.</li>
+<li>Simplified multiprocessing usage to avoid setting global start context when trying to use fork.</li>
+<li>Added EFN regression example.</li>
+</ul>
+<p><strong>1.1.2</strong></p>
+<ul>
+<li>Remove extraneous warning from setting multiprocessing start method on OSX.</li>
+</ul>
+<p><strong>1.1.1</strong></p>
+<ul>
+<li>Try to set multiprocessing start method to 'fork' in order for EMD multicore functionality to work, warn if the context has already been set otherwise.</li>
+</ul>
+<p><strong>1.1.0</strong></p>
+<ul>
+<li>Changed default EFP behavior when <code>kappa≠1</code> and added option to revert to original behavior if desired. See the <a href="/docs/measures">EFP Measures</a> page for more details.</li>
+<li>Explicitly cast some numpy arrays as object arrays to avoid deprecation warnings.</li>
+<li>Cached EFP file info after the first time it is accessed to improve speed.</li>
+<li>Added Python 3.8 to Travis CI testing.</li>
+<li>Deployment to PyPI via Travis CI.</li>
+</ul>
+<h2 id="10x">1.0.x</h2>
+<p><strong>1.0.3</strong></p>
+<ul>
+<li>Increased the speed of <code>pjs_from_ptyphims</code>.</li>
+<li>Channels now default to the last axis for images to accomodate the limitations of newer versions of Keras/Tensorflow.</li>
+<li><code>pixelate</code>, <code>standardize</code>, <code>zero_center</code> functions now designed to work with <code>channels_last</code>.</li>
+<li>Added EMD animation example.</li>
+</ul>
+<p><strong>1.0.2</strong></p>
+<ul>
+<li>Added <code>ptyphims_from_pjs</code> function in fastjet_utils.</li>
+<li>Removed eroneous print statement in <code>D2</code> when using strassen.</li>
+</ul>
+<p><strong>1.0.1</strong></p>
+<ul>
+<li>Added Pythia/Herwig + Delphes samples used for OmniFold unfolding study to the <code>datasets</code> submodule of EnergyFlow.</li>
+<li>Added <code>beta</code> option to EMD module.</li>
+</ul>
+<p><strong>1.0.0</strong></p>
+<ul>
+<li>Reintroduced EFMs, with full documentation, testing, and integration with the core EFP code.</li>
+<li>Fixed bug in qg_nsubs where <code>cache_dir</code> was set to <code>None</code> which caused an error. Thanks to Serhii Kryhin for catching this!</li>
+<li>Fixed bug where <code>emd</code> module could modify the inputs in place.</li>
+<li>Changed the <code>emds</code> function to use global arrays in order to consume less memory when using multiple jobs.</li>
+<li>Updated the <code>eval_filters</code> method of the <code>EFN</code> class to adjust for new Keras behavior.</li>
+<li>Implemented the <code>D2</code>, <code>C2</code>, and <code>C3</code> observables using EFPs.</li>
+<li>Two new demos, <a href="/demos/#efm-demo">EFM Demo</a> and <a href="/demos/#counting-leafless-multigaphs-with-nauty">Counting Leafless Multigaphs with Nauty</a>.</li>
+</ul>
+<h2 id="013x">0.13.x</h2>
+<p><strong>0.13.2</strong></p>
+<ul>
+<li>Keras 2.2.5 fixes a bug in their <code>batch_dot</code> function that is used by their <code>Dot</code> layer which is used by the <code>EFN</code> and <code>PFN</code> classes. This necessitates adjusting our code to account for the new behavior.</li>
+</ul>
+<p><strong>0.13.1</strong></p>
+<ul>
+<li>When loading MOD HDF5 files, jets are now made from copies of the particle arrays rather than from views, 
+enabling the large arrays to be freed and only the selected jets to remain in memory (which can have substantial memory savings).</li>
+</ul>
+<p><strong>0.13.0</strong></p>
+<ul>
+<li>Added support for downloading and reading MOD datasets containing CMS Open Data and Simulation from Zenodo.</li>
+<li>EMD module now has support for spherical measure.</li>
+<li>Added particle utility functions to map PDG IDs to electric charges.</li>
+<li>Added <code>sum_ptyphims</code> and <code>sum_ptyphipids</code> functions to sum four-vectors given in hadronic coordinates.</li>
+<li>Added scheme choices for summing four-vectors of particles.</li>
+<li>Added preprocessing functions to particle utilities, including <code>center_ptyphims</code>, 
+<code>rotate_ptyphims</code> and <code>reflect_ptyphims</code>.</li>
+<li>A <code>~</code> is now expanded to the user's home directory properly in the <code>filepath</code> option to architectures.</li>
+<li>Added <code>h5py</code> install dependency for MOD Datasets.</li>
+<li>Improved binder environment with fastjet, latex, and default matplotlib settings.</li>
+<li>Added observables submodule which currently includes image_activity and zg.</li>
+<li>EMD module now imported when importing toplevel energyflow.</li>
+</ul>
+<h2 id="012x">0.12.x</h2>
+<p><strong>0.12.3</strong></p>
+<ul>
+<li>Set allow_pickle to True explicitly in Generator (recently changed default in NumPy).</li>
+<li>Added Herwig7.1 dataset to <code>qg_jets</code>. A big thanks to Aditya Pathak for generating these Herwig samples!</li>
+<li>Quark and gluon dataset files can now be obtained from Zenodo in addition to Dropbox.</li>
+<li>Changed internals of EFN to use standalone functions for easier use of subnetwork components.</li>
+<li>Added some particle utility functions to deal with PDG IDs.</li>
+<li>Added particle utilities to deal with pseudorapidities.</li>
+<li>Changed <code>gen_random_events_mcom</code> to have positive energies (momenta still sum to zero).</li>
+<li>Added l2 regularization to layers in EFN and PFN architectures. Thanks to Anders Andreassen for submiting this pull request!</li>
+<li>Added tests for particle utils.</li>
+<li>Particle utilities now accept arrays of events.</li>
+</ul>
+<p><strong>0.12.2</strong></p>
+<ul>
+<li>Added another periodic phi test for event EMD.</li>
+<li>Changed gdim default to None (to reduce potentially unexpected behavior).</li>
+<li>Increased numerical stability of EMD computation by including an internal change of units.</li>
+<li>Added verbosity functionality to EFP Generator.</li>
+</ul>
+<p><strong>0.12.1</strong></p>
+<ul>
+<li>Named lambda functions inside EFNs and PFNs (necessary for saving models).</li>
+<li>Fixed typo in archbase code.</li>
+<li>Added tests for architecture code.</li>
+</ul>
+<p><strong>0.12.0</strong></p>
+<ul>
+<li>Fixed potential <a href="https://github.com/keras-team/keras/issues/12495">issue</a> involving the Keras <code>Masking</code> 
+layer not functioning as documented. This is not expected to affect any EFN models that
+were padded with zeros, nor any PFN models for which the padding was consistent across training and testing
+sets. Thanks to Anders Andreassen for pointing this out!</li>
+<li>Added arbitrary attribute lookup in the underlying model for all EnergyFlow architectures.</li>
+<li>Deprecated old EFN/PFN parameter names.</li>
+<li>Built-in support for ModelCheckpoint and EarlyStopping callbacks for neural network models.</li>
+<li>Made naming of neural network layers optional, allowing pieces to be reused more easily.</li>
+<li>Support for periodic phi values in EMD module.</li>
+<li>Added support for passing arbitrary compilation options to Keras models.</li>
+<li>Added EMD Demo notebook</li>
+</ul>
+<h2 id="011x">0.11.x</h2>
+<p><strong>0.11.2</strong></p>
+<ul>
+<li>Added advanced activations support for neural network architectures. Thanks to Kevin Bauer for this suggestion!</li>
+</ul>
+<p><strong>0.11.1</strong></p>
+<ul>
+<li>Fixed issue when using Python 2 caused by not importing division in dataset loading code. Thanks to Matt LeBlanc 
+for pointing this out!</li>
+<li>Added <code>n_iter_max</code> option to EMD functions.</li>
+</ul>
+<p><strong>0.11.0</strong></p>
+<ul>
+<li>Added <code>emd</code> module to EnergyFlow. This new module is not imported by default and relies on
+the <a href="https://pot.readthedocs.io">Python Optimal Transport</a> library and <a href="http://scipy.github.io/devdocs/">SciPy</a>.</li>
+<li>Included binder support for the jupyter notebook demos. Thanks to Matthew Feickert for contributing this feature!</li>
+</ul>
+<h2 id="010x">0.10.x</h2>
+<p><strong>0.10.5</strong></p>
+<ul>
+<li>Minor improvement and fixes. Thanks to Preksha Naik for pointing out a typo!</li>
+</ul>
+<p><strong>0.10.4</strong></p>
+<ul>
+<li>Updates to the documentation and enhanced examples provided.</li>
+</ul>
+<p><strong>0.10.3</strong></p>
+<ul>
+<li>Finalized initial documentation pages.</li>
+<li>Minor improvement and fixes.</li>
+</ul>
+<p><strong>0.10.2</strong></p>
+<ul>
+<li>Minor improvement and fixes.</li>
+</ul>
+<p><strong>0.10.1</strong></p>
+<ul>
+<li>Minor improvement and fixes.</li>
+</ul>
+<p><strong>0.10.0</strong></p>
+<ul>
+<li>Added <code>archs</code> module containing EFN, PFN, DNN, CNN, and Linear models.</li>
+</ul>
+<h2 id="09x">&lt;0.9.x</h2>
+<ul>
+<li>Rapid development of EFP code.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../news/" class="btn btn-neutral float-right" title="News">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../faqs/" class="btn btn-neutral" title="FAQs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2017-2021 EnergyFlow Authors</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/pkomiske/EnergyFlow" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../faqs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../news/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../js/eftheme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

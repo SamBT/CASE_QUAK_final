@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Patrick T. Komiske III, Eric M. Metodiev">
+  <link rel="canonical" href="https://energyflow.network/docs/efp/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Energy Flow Polynomials - EnergyFlow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/eftheme.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Energy Flow Polynomials";
+    var mkdocs_page_input_path = "docs/efp.md";
+    var mkdocs_page_url = "/docs/efp/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-122962541-1', 'energyflow.network');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+  <a href="../..">
+    <div class="eflogo">
+      <img src="../../img/eflogowhite.png"  class="eflogo-img"> EnergyFlow
+    </div>
+  </a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../demos/">Demos</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faqs/">FAQs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../releases/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../news/">News</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../archs/">Architectures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../emd/">EMD</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efm/">Energy Flow Moments</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Energy Flow Polynomials</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#efp">EFP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compute">compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#batch_compute">batch_compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#graph">graph</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#simple_graph">simple_graph</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#weights">weights</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#weight_set">weight_set</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#einstr">einstr</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#einpath">einpath</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#efm_spec">efm_spec</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#efm_einstr">efm_einstr</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#efm_einpath">efm_einpath</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#efmset">efmset</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#np_optimize">np_optimize</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#n">n</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#e">e</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#d">d</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#v">v</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#k">k</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#c">c</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#p">p</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#h">h</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#spec">spec</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ndk">ndk</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#efpset">EFPSet</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compute_1">compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#batch_compute_1">batch_compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#calc_disc">calc_disc</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sel">sel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#csel">csel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#count">count</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#graphs">graphs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#simple_graphs">simple_graphs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_1">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#efps">efps</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#efmset_1">efmset</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#specs">specs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cspecs">cspecs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#weight_set_1">weight_set</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cols">cols</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../measures/">Measures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../gen/">Multigraph Generation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../obs/">Observables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">EnergyFlow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Energy Flow Polynomials</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="energy-flow-polynomials">Energy Flow Polynomials</h1>
+<p>Energy Flow Polynomials (EFPs) are a set of observables, indexed by
+non-isomorphic multigraphs, which linearly span the space of infrared and
+collinear (IRC) safe observables.</p>
+<p>An EFP, indexed by a multigraph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, takes the following form:</p>
+<div>
+<div class="MathJax_Preview">\text{EFP}_G=\sum_{i_1=1}^M\cdots\sum_{i_N=1}^Mz_{i_1}\cdots z_{i_N}
+\prod_{(k,\ell)\in G}\theta_{i_ki_\ell}</div>
+<script type="math/tex; mode=display">\text{EFP}_G=\sum_{i_1=1}^M\cdots\sum_{i_N=1}^Mz_{i_1}\cdots z_{i_N}
+\prod_{(k,\ell)\in G}\theta_{i_ki_\ell}</script>
+</div>
+<p>where <span><span class="MathJax_Preview">z_i</span><script type="math/tex">z_i</script></span> is a measure of the energy of particle <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">\theta_{ij}</span><script type="math/tex">\theta_{ij}</script></span> is a
+measure of the angular separation between particles <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>. The specific
+choices for "energy" and "angular" measure depend on the collider context and
+are discussed in the <a href="../measures">Measures</a> section.</p>
+<hr />
+<h2 id="efp">EFP</h2>
+<p>A class for representing and computing a single EFP.</p>
+<pre><code class="language-python">energyflow.EFP(edges, measure='hadr', beta=1, kappa=1, normed=None, coords=None,
+                      check_input=True, np_optimize=True)
+</code></pre>
+<p>Since a standalone EFP defines and holds a <code>Measure</code> instance, all
+<code>Measure</code> keywords are accepted.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>edges</strong> : <em>list</em><ul>
+<li>Edges of the EFP graph specified by pairs of vertices.</li>
+</ul>
+</li>
+<li><strong>weights</strong> : <em>list</em> of <em>int</em> or <code>None</code><ul>
+<li>If not <code>None</code>, the multiplicities of each edge.</li>
+</ul>
+</li>
+<li><strong>measure</strong> : {<code>'hadr'</code>, <code>'hadrdot'</code>, <code>'hadrefm'</code>, <code>'ee'</code>, <code>'eeefm'</code>}<ul>
+<li>The choice of measure. See <a href="../measures">Measures</a> for additional
+info.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>float</em><ul>
+<li>The parameter <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> appearing in the measure. Must be greater
+than zero.</li>
+</ul>
+</li>
+<li><strong>kappa</strong> : {<em>float</em>, <code>'pf'</code>}<ul>
+<li>If a number, the energy weighting parameter <span><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span>. If <code>'pf'</code>,
+use <span><span class="MathJax_Preview">\kappa=v-1</span><script type="math/tex">\kappa=v-1</script></span> where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the valency of the vertex.</li>
+</ul>
+</li>
+<li><strong>normed</strong> : <em>bool</em><ul>
+<li>Controls normalization of the energies in the measure.</li>
+</ul>
+</li>
+<li><strong>coords</strong> : {<code>'ptyphim'</code>, <code>'epxpypz'</code>, <code>None</code>}<ul>
+<li>Controls which coordinates are assumed for the input. See 
+<a href="../measures">Measures</a> for additional info.</li>
+</ul>
+</li>
+<li><strong>check_input</strong> : <em>bool</em><ul>
+<li>Whether to check the type of the input each time or assume the
+first input type.</li>
+</ul>
+</li>
+<li><strong>np_optimize</strong> : {<code>True</code>, <code>False</code>, <code>'greedy'</code>, <code>'optimal'</code>}<ul>
+<li>The <code>optimize</code> keyword of <code>numpy.einsum_path</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="compute">compute</h3>
+<pre><code class="language-python">compute(event=None, zs=None, thetas=None, nhats=None)
+</code></pre>
+<p>Computes the value of the EFP on a single event. Note that <code>EFP</code>
+also is callable, in which case this method is invoked.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>event</strong> : 2-d array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The event as an array of particles in the coordinates specified
+by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>zs</strong> : 1-d array_like<ul>
+<li>If present, <code>thetas</code> must also be present, and <code>zs</code> is used in place 
+of the energies of an event.</li>
+</ul>
+</li>
+<li><strong>thetas</strong> : 2-d array_like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>thetas</code> is used in place 
+of the pairwise angles of an event.</li>
+</ul>
+</li>
+<li><strong>nhats</strong> : 2-d array like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>nhats</code> is used in place
+of the scaled particle momenta. Only applicable when EFMs are being
+used.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>float</em><ul>
+<li>The EFP value.</li>
+</ul>
+</li>
+</ul>
+<h3 id="batch_compute">batch_compute</h3>
+<pre><code class="language-python">batch_compute(events, n_jobs=None)
+</code></pre>
+<p>Computes the value of the observable on several events.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>events</strong> : array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The events as an array of arrays of particles in coordinates
+matching those anticipated by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>n_jobs</strong> : <em>int</em> or <code>None</code><ul>
+<li>The number of worker processes to use. A value of <code>None</code> will
+use as many processes as there are CPUs on the machine.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>1-d numpy.ndarray</em><ul>
+<li>A vector of the observable values for each event.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties">properties</h3>
+<h4 id="graph">graph</h4>
+<pre><code class="language-python">graph
+</code></pre>
+<p>Graph of this EFP represented by a list of edges.</p>
+<h4 id="simple_graph">simple_graph</h4>
+<pre><code class="language-python">simple_graph
+</code></pre>
+<p>Simple graph of this EFP (forgetting all multiedges)
+represented by a list of edges.</p>
+<h4 id="weights">weights</h4>
+<pre><code class="language-python">weights
+</code></pre>
+<p>Edge weights (counts) for the graph of this EFP.</p>
+<h4 id="weight_set">weight_set</h4>
+<pre><code class="language-python">weight_set
+</code></pre>
+<p>Set of edge weights (counts) for the graph of this EFP.</p>
+<h4 id="einstr">einstr</h4>
+<pre><code class="language-python">einstr
+</code></pre>
+<p>Einstein summation string for the EFP computation.</p>
+<h4 id="einpath">einpath</h4>
+<pre><code class="language-python">einpath
+</code></pre>
+<p>NumPy einsum path specification for EFP computation.</p>
+<h4 id="efm_spec">efm_spec</h4>
+<pre><code class="language-python">efm_spec
+</code></pre>
+<p>List of EFM signatures corresponding to efm_einstr.</p>
+<h4 id="efm_einstr">efm_einstr</h4>
+<pre><code class="language-python">efm_einstr
+</code></pre>
+<p>Einstein summation string for the EFM computation.</p>
+<h4 id="efm_einpath">efm_einpath</h4>
+<pre><code class="language-python">efm_einpath
+</code></pre>
+<p>NumPy einsum path specification for EFM computation.</p>
+<h4 id="efmset">efmset</h4>
+<pre><code class="language-python">efmset
+</code></pre>
+<p>Instance of <code>EFMSet</code> help by this EFP if using EFMs.</p>
+<h4 id="np_optimize">np_optimize</h4>
+<pre><code class="language-python">np_optimize
+</code></pre>
+<p>The np_optimize keyword argument that initialized this EFP instance.</p>
+<h4 id="n">n</h4>
+<pre><code class="language-python">n
+</code></pre>
+<p>Number of vertices in the graph of this EFP.</p>
+<h4 id="e">e</h4>
+<pre><code class="language-python">e
+</code></pre>
+<p>Number of edges in the simple graph of this EFP.</p>
+<h4 id="d">d</h4>
+<pre><code class="language-python">d
+</code></pre>
+<p>Degree, or number of edges, in the graph of this EFP.</p>
+<h4 id="v">v</h4>
+<pre><code class="language-python">v
+</code></pre>
+<p>Maximum valency of any vertex in the graph.</p>
+<h4 id="k">k</h4>
+<pre><code class="language-python">k
+</code></pre>
+<p>Index of this EFP. Determined by EFPSet or -1 otherwise.</p>
+<h4 id="c">c</h4>
+<pre><code class="language-python">c
+</code></pre>
+<p>VE complexity <span><span class="MathJax_Preview">\chi</span><script type="math/tex">\chi</script></span> of this EFP.</p>
+<h4 id="p">p</h4>
+<pre><code class="language-python">p
+</code></pre>
+<p>Number of connected components of this EFP. Note that the empty
+graph conventionally has one connected component.</p>
+<h4 id="h">h</h4>
+<pre><code class="language-python">h
+</code></pre>
+<p>Number of valency 1 vertices ('hanging chads) of this EFP.</p>
+<h4 id="spec">spec</h4>
+<pre><code class="language-python">spec
+</code></pre>
+<p>Specification array for this EFP.</p>
+<h4 id="ndk">ndk</h4>
+<pre><code class="language-python">ndk
+</code></pre>
+<p>Tuple of <code>n</code>, <code>d</code>, and <code>k</code> values which form a unique identifier of
+this EFP within an <code>EFPSet</code>.</p>
+<hr />
+<h2 id="efpset">EFPSet</h2>
+<p>A class that holds a collection of EFPs and computes their values on
+events. Note that all keyword arguments are stored as properties of the
+<code>EFPSet</code> instance.</p>
+<pre><code class="language-python">energyflow.EFPSet(*args, filename=None, measure='hadr', beta=1, kappa=1, normed=None, 
+                         coords=None, check_input=True, verbose=0)
+</code></pre>
+<p><code>EFPSet</code> can be initialized in one of three ways (in order of
+precedence):</p>
+<ol>
+<li><strong>Graphs</strong> - Pass in graphs as lists of edges, just as for
+individual EFPs.</li>
+<li><strong>Generator</strong> - Pass in a custom <code>Generator</code> object as the first
+positional argument.</li>
+<li><strong>Custom File</strong> - Pass in the name of a <code>.npz</code> file saved with a
+custom <code>Generator</code>.</li>
+<li><strong>Default</strong> - Use the <span><span class="MathJax_Preview">d\le10</span><script type="math/tex">d\le10</script></span> EFPs that come installed with the
+<code>EnergFlow</code> package.</li>
+</ol>
+<p>To control which EFPs are included, <code>EFPSet</code> accepts an arbitrary
+number of specifications (see <a href="#sel"><code>sel</code></a>) and only EFPs meeting each
+specification are included in the set. Note that no specifications
+should be passed in when initializing from explicit graphs.</p>
+<p>Since an EFP defines and holds a <code>Measure</code> instance, all <code>Measure</code>
+keywords are accepted.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>*args</strong> : <em>arbitrary positional arguments</em><ul>
+<li>Depending on the method of initialization, these can be either
+1) graphs to store, as lists of edges 2) a Generator instance
+followed by some number of valid arguments to <code>sel</code> or 3,4) valid
+arguments to <code>sel</code>. When passing in specific graphs, no arguments
+to <code>sel</code> should be given.</li>
+</ul>
+</li>
+<li><strong>filename</strong> : <em>string</em><ul>
+<li>Path to a <code>.npz</code> file which has been saved by a valid
+<code>energyflow.Generator</code>. A value of <code>None</code> will use the provided
+graphs, if a file is needed at all.</li>
+</ul>
+</li>
+<li><strong>measure</strong> : {<code>'hadr'</code>, <code>'hadr-dot'</code>, <code>'ee'</code>}<ul>
+<li>See <a href="../measures">Measures</a> for additional info.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>float</em><ul>
+<li>The parameter <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> appearing in the measure. Must be greater
+than zero.</li>
+</ul>
+</li>
+<li><strong>kappa</strong> : {<em>float</em>, <code>'pf'</code>}<ul>
+<li>If a number, the energy weighting parameter <span><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span>. If <code>'pf'</code>,
+use <span><span class="MathJax_Preview">\kappa=v-1</span><script type="math/tex">\kappa=v-1</script></span> where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the valency of the vertex.</li>
+</ul>
+</li>
+<li><strong>normed</strong> : <em>bool</em><ul>
+<li>Controls normalization of the energies in the measure.</li>
+</ul>
+</li>
+<li><strong>coords</strong> : {<code>'ptyphim'</code>, <code>'epxpypz'</code>, <code>None</code>}<ul>
+<li>Controls which coordinates are assumed for the input. See 
+<a href="../measures">Measures</a> for additional info.</li>
+</ul>
+</li>
+<li><strong>check_input</strong> : <em>bool</em><ul>
+<li>Whether to check the type of the input each time or assume the
+first input type.</li>
+</ul>
+</li>
+<li><strong>verbose</strong> : <em>int</em><ul>
+<li>Controls printed output when initializing <code>EFPSet</code> from a file or
+<code>Generator</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="compute_1">compute</h3>
+<pre><code class="language-python">compute(event=None, zs=None, thetas=None, nhats=None)
+</code></pre>
+<p>Computes the values of the stored EFPs on a single event. Note that
+<code>EFPSet</code> also is callable, in which case this method is invoked.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>event</strong> : 2-d array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The event as an array of particles in the coordinates specified
+by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>zs</strong> : 1-d array_like<ul>
+<li>If present, <code>thetas</code> must also be present, and <code>zs</code> is used in place 
+of the energies of an event.</li>
+</ul>
+</li>
+<li><strong>thetas</strong> : 2-d array_like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>thetas</code> is used in place 
+of the pairwise angles of an event.</li>
+</ul>
+</li>
+<li><strong>nhats</strong> : 2-d array like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>nhats</code> is used in place
+of the scaled particle momenta. Only applicable when EFMs are being
+used.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>1-d numpy.ndarray</em><ul>
+<li>A vector of the EFP values.</li>
+</ul>
+</li>
+</ul>
+<h3 id="batch_compute_1">batch_compute</h3>
+<pre><code class="language-python">batch_compute(events, n_jobs=None)
+</code></pre>
+<p>Computes the value of the stored EFPs on several events.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>events</strong> : array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The events as an array of arrays of particles in coordinates
+matching those anticipated by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>n_jobs</strong> : <em>int</em> or <code>None</code><ul>
+<li>The number of worker processes to use. A value of <code>None</code> will
+attempt to use as many processes as there are CPUs on the machine.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>2-d numpy.ndarray</em><ul>
+<li>An array of the EFP values for each event.</li>
+</ul>
+</li>
+</ul>
+<h3 id="calc_disc">calc_disc</h3>
+<pre><code class="language-python">calc_disc(X)
+</code></pre>
+<p>Computes disconnected EFPs according to the internal 
+specifications using the connected EFPs provided as input. Note that
+this function has no effect if the <code>EFPSet</code> was initialized with
+specific graphs.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>X</strong> : <em>numpy.ndarray</em><ul>
+<li>Array of connected EFPs. Rows are different events, columns are
+the different EFPs. Can handle a single event (a 1-dim array) as
+input. EFPs are assumed to be in the order expected by the instance
+of <code>EFPSet</code>; the safest way to ensure this is to use the same
+<code>EFPSet</code> to calculate both connected and disconnected EFPs. This
+function is used internally in <code>compute</code> and <code>batch_compute</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>numpy.ndarray</em><ul>
+<li>A concatenated array of the connected and disconnected EFPs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sel">sel</h3>
+<pre><code class="language-python">sel(*args)
+</code></pre>
+<p>Computes a boolean mask of EFPs matching each of the
+specifications provided by the <code>args</code>. </p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>*args</strong> : arbitrary positional arguments<ul>
+<li>Each argument can be either a string or a length-two iterable. If
+the argument is a string, it should consist of three parts: a
+character which is a valid element of <code>cols</code>, a comparison
+operator (one of <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>), and a number.
+Whitespace between the parts does not matter. If the argument is a
+tuple, the first element should be a string containing a column
+header character and a comparison operator; the second element is
+the value to be compared. The tuple version is useful when the
+value is a variable that changes (such as in a list comprehension).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>1-d numpy.ndarray</em><ul>
+<li>A boolean array of length the number of EFPs stored by this object. </li>
+</ul>
+</li>
+</ul>
+<h3 id="csel">csel</h3>
+<pre><code class="language-python">csel(*args)
+</code></pre>
+<p>Same as <code>sel</code> except using <code>cspecs</code> to select from.</p>
+<h3 id="count">count</h3>
+<pre><code class="language-python">count(*args)
+</code></pre>
+<p>Counts the number of EFPs meeting the specifications
+of the arguments using <code>sel</code>.</p>
+<p><strong>Arguments</strong> </p>
+<ul>
+<li><strong>*args</strong> : arbitrary positional arguments<ul>
+<li>Valid arguments to be passed to <code>sel</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>int</em><ul>
+<li>The number of EFPs meeting the specifications provided.</li>
+</ul>
+</li>
+</ul>
+<h3 id="graphs">graphs</h3>
+<pre><code class="language-python">graphs(*args)
+</code></pre>
+<p>Graphs meeting provided specifications.</p>
+<p><strong>Arguments</strong> </p>
+<ul>
+<li><strong>*args</strong> : arbitrary positional arguments<ul>
+<li>Valid arguments to be passed to <code>sel</code>, or, if a single integer, 
+the index of a particular graph.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>list</em>, if single integer argument is given<ul>
+<li>The list of edges corresponding to the specified graph</li>
+</ul>
+</li>
+<li><em>1-d numpy.ndarray</em>, otherwise<ul>
+<li>An array of graphs (as lists of edges) matching the
+specifications.</li>
+</ul>
+</li>
+</ul>
+<h3 id="simple_graphs">simple_graphs</h3>
+<pre><code class="language-python">simple_graphs(*args)
+</code></pre>
+<p>Simple graphs meeting provided specifications.</p>
+<p><strong>Arguments</strong> </p>
+<ul>
+<li><strong>*args</strong> : arbitrary positional arguments<ul>
+<li>Valid arguments to be passed to <code>sel</code>, or, if a single integer, 
+the index of particular simple graph.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>list</em>, if single integer argument is given<ul>
+<li>The list of edges corresponding to the specified simple graph</li>
+</ul>
+</li>
+<li><em>1-d numpy.ndarray</em>, otherwise<ul>
+<li>An array of simple graphs (as lists of edges) matching the
+specifications.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties_1">properties</h3>
+<h4 id="efps">efps</h4>
+<pre><code class="language-python">efps
+</code></pre>
+<p>List of EFPs held by the <code>EFPSet</code>.</p>
+<h4 id="efmset_1">efmset</h4>
+<pre><code class="language-python">efmset
+</code></pre>
+<p>The <code>EFMSet</code> held by the <code>EFPSet</code>, if using EFMs.</p>
+<h4 id="specs">specs</h4>
+<pre><code class="language-python">specs
+</code></pre>
+<p>An array of EFP specifications. Each row represents an EFP 
+and the columns represent the quantities indicated by <code>cols</code>.</p>
+<h4 id="cspecs">cspecs</h4>
+<pre><code class="language-python">cspecs
+</code></pre>
+<p>Specification array for connected EFPs.</p>
+<h4 id="weight_set_1">weight_set</h4>
+<pre><code class="language-python">weight_set
+</code></pre>
+<p>The union of all weights needed by the EFPs stored by the 
+<code>EFPSet</code>.</p>
+<h4 id="cols">cols</h4>
+<pre><code class="language-python">cols
+</code></pre>
+<p>Column labels for <code>specs</code>. Each EFP has a property corresponding to
+each column.</p>
+<ul>
+<li><code>n</code> : Number of vertices.</li>
+<li><code>e</code> : Number of simple edges.</li>
+<li><code>d</code> : Degree, or number of multiedges.</li>
+<li><code>v</code> : Maximum valency (number of edges touching a vertex).</li>
+<li><code>k</code> : Unique identifier within EFPs of this (n,d).</li>
+<li><code>c</code> : VE complexity <span><span class="MathJax_Preview">\chi</span><script type="math/tex">\chi</script></span>.</li>
+<li><code>p</code> : Number of prime factors (or connected components).</li>
+<li><code>h</code> : Number of valency 1 vertices (a.k.a. 'hanging chads').</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../measures/" class="btn btn-neutral float-right" title="Measures">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../efm/" class="btn btn-neutral" title="Energy Flow Moments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2017-2021 EnergyFlow Authors</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/pkomiske/EnergyFlow" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../efm/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../measures/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/eftheme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

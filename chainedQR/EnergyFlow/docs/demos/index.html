@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Patrick T. Komiske III, Eric M. Metodiev">
+  <link rel="canonical" href="https://energyflow.network/demos/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Demos - EnergyFlow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../css/eftheme.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Demos";
+    var mkdocs_page_input_path = "demos.md";
+    var mkdocs_page_url = "/demos/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-122962541-1', 'energyflow.network');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+  <a href="..">
+    <div class="eflogo">
+      <img src="../img/eflogowhite.png"  class="eflogo-img"> EnergyFlow
+    </div>
+  </a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Demos</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#energyflow-demo">EnergyFlow Demo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#emd-demo">EMD Demo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mod-jet-demo">MOD Jet Demo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#efm-demo">EFM Demo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#counting-leafless-multigaphs-with-nauty">Counting Leafless Multigaphs with Nauty</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../faqs/">FAQs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../releases/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../news/">News</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/archs/">Architectures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/datasets/">Datasets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/emd/">EMD</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/efm/">Energy Flow Moments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/efp/">Energy Flow Polynomials</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/measures/">Measures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/gen/">Multigraph Generation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/obs/">Observables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/utils/">Utils</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">EnergyFlow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Getting Started &raquo;</li>
+        
+      
+    
+    <li>Demos</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="interactive-demos">Interactive Demos</h1>
+<p>Each of the following demos are provided as Jupyter notebooks that are available on GitHub. <a href="https://mybinder.org">Binder</a> provides an awesome platform for trying out these notebooks without installing anything whatsoever.</p>
+<p>For more computationally intensive tasks, such as training EFNs/PFNs or other neural networks, check out the <a href="../examples">Examples</a>.</p>
+<h2 id="energyflow-demo">EnergyFlow Demo</h2>
+<p>The EnergyFlow Demo provides an introduction to using EnergyFlow to compute Energy Flow Polynomials.</p>
+<ul>
+<li><a href="https://github.com/pkomiske/EnergyFlow/blob/master/demos/EnergyFlow%20Demo.ipynb">View or download</a> the notebook from GitHub</li>
+<li><a href="https://mybinder.org/v2/gh/pkomiske/EnergyFlow/master?filepath=demos/EnergyFlow%20Demo.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></li>
+</ul>
+<h2 id="emd-demo">EMD Demo</h2>
+<p>The EMD Demo provides an introduction to using EnergyFlow for computing the Energy Mover's Distance (EMD) between jets.</p>
+<ul>
+<li><a href="https://github.com/pkomiske/EnergyFlow/blob/master/demos/EMD%20Demo.ipynb">View or download</a> the notebook from GitHub</li>
+<li><a href="https://mybinder.org/v2/gh/pkomiske/EnergyFlow/master?filepath=demos/EMD%20Demo.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></li>
+</ul>
+<h2 id="mod-jet-demo">MOD Jet Demo</h2>
+<p>The MOD Jet Demo provides an introduction to using CMS Open Data in the MOD HDF5 format via EnergyFlow. Jets from the <a href="http://doi.org/10.7483/OPENDATA.CMS.UP77.P6PQ">CMS 2011A Jet Primary Dataset</a> have been processed into this easy-to-use format and are <a href="https://doi.org/10.5281/zenodo.3340205">available on Zenodo</a> along with corresponding simulated datasets.</p>
+<ul>
+<li><a href="https://github.com/pkomiske/EnergyFlow/blob/master/demos/MOD%20Jet%20Demo.ipynb">View or download</a> the notebook from GitHub</li>
+<li><a href="https://mybinder.org/v2/gh/pkomiske/EnergyFlow/master?filepath=demos/MOD%20Jet%20Demo.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></li>
+</ul>
+<h2 id="efm-demo">EFM Demo</h2>
+<p>The EFM Demo provides an introduction to Energy Flow Moments to compute EFPs and verify linear relations among them.</p>
+<ul>
+<li><a href="https://github.com/pkomiske/EnergyFlow/blob/master/demos/EFM%20Demo.ipynb">View or download</a> the notebook from GitHub</li>
+<li><a href="https://mybinder.org/v2/gh/pkomiske/EnergyFlow/master?filepath=demos/EFM%20Demo.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></li>
+</ul>
+<h2 id="counting-leafless-multigaphs-with-nauty">Counting Leafless Multigaphs with Nauty</h2>
+<p>Though not demonstrating features of the EnergyFlow library, this script uses the graph program <a href="http://pallini.di.uniroma1.it/">Nauty</a> to count leafless multigraphs, a task which relates to EFMs as described in <a href="https://arxiv.org/abs/1911.04491">1911.04491</a>. To run this script, first <a href="http://pallini.di.uniroma1.it/nauty26r12.tar.gz">download Nauty</a> and compile it. Then point the Python script to the Nauty installation directory. Note that running with <code>-d 16</code> has been known to take half a month.</p>
+<ul>
+<li><a href="https://github.com/pkomiske/EnergyFlow/blob/master/demos/count_leafless_multigraphs_nauty.py">View or download</a> the script from GitHub</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../examples/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2017-2021 EnergyFlow Authors</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/pkomiske/EnergyFlow" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../js/eftheme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Patrick T. Komiske III, Eric M. Metodiev">
+  <link rel="canonical" href="https://energyflow.network/docs/gen/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Multigraph Generation - EnergyFlow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/eftheme.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Multigraph Generation";
+    var mkdocs_page_input_path = "docs/gen.md";
+    var mkdocs_page_url = "/docs/gen/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-122962541-1', 'energyflow.network');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+  <a href="../..">
+    <div class="eflogo">
+      <img src="../../img/eflogowhite.png"  class="eflogo-img"> EnergyFlow
+    </div>
+  </a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../demos/">Demos</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faqs/">FAQs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../releases/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../news/">News</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../archs/">Architectures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../emd/">EMD</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efm/">Energy Flow Moments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efp/">Energy Flow Polynomials</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../measures/">Measures</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Multigraph Generation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#generator">Generator</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#save">save</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#specs">specs</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../obs/">Observables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">EnergyFlow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Multigraph Generation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="multigraph-generation">Multigraph Generation</h1>
+<p>Implementation of EFP/EFM Generator class.</p>
+<hr />
+<h2 id="generator">Generator</h2>
+<p>Generates non-isomorphic multigraphs according to provided specifications.</p>
+<pre><code class="language-python">energyflow.Generator(dmax=None, nmax=None, emax=None, cmax=None, vmax=None, comp_dmaxs=None,
+                     filename=None, gen_efms=True, np_optimize='greedy', verbose=False)
+</code></pre>
+<p>Doing a fresh generation of connected multigraphs (<code>filename=None</code>)
+requires that <code>igraph</code> be installed.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>dmax</strong> : <em>int</em><ul>
+<li>The maximum number of edges of the generated connected graphs.</li>
+</ul>
+</li>
+<li><strong>nmax</strong> : <em>int</em><ul>
+<li>The maximum number of vertices of the generated connected graphs.</li>
+</ul>
+</li>
+<li><strong>emax</strong> : <em>int</em><ul>
+<li>The maximum number of edges of the generated connected simple
+graphs.</li>
+</ul>
+</li>
+<li><strong>cmax</strong> : <em>int</em><ul>
+<li>The maximum VE complexity <span><span class="MathJax_Preview">\chi</span><script type="math/tex">\chi</script></span> of the generated connected
+graphs.</li>
+</ul>
+</li>
+<li><strong>vmax</strong> : <em>int</em><ul>
+<li>The maximum valency of the generated connected graphs.</li>
+</ul>
+</li>
+<li><strong>comp_dmaxs</strong> : {<em>dict</em>, <em>int</em>}<ul>
+<li>If an integer, the maximum number of edges of the generated
+disconnected graphs. If a dictionary, the keys are numbers of
+vertices and the values are the maximum number of edges of the
+generated disconnected graphs with that number of vertices.</li>
+</ul>
+</li>
+<li><strong>filename</strong> : <em>str</em><ul>
+<li>If <code>None</code>, do a complete generation from scratch. If set to a
+string, read in connected graphs from the file given, restrict them
+according to the various 'max' parameters, and do a fresh
+disconnected generation. The special value <code>filename='default'</code>
+means to read in graphs from the default file. This is useful when
+various disconnected graph parameters are to be varied since the
+generation of large simple graphs is the most computationlly
+intensive part.</li>
+</ul>
+</li>
+<li><strong>gen_efms</strong> : <em>bool</em><ul>
+<li>Controls whether EFM information is generated.</li>
+</ul>
+</li>
+<li><strong>np_optimize</strong> : {<code>True</code>, <code>False</code>, <code>'greedy'</code>, <code>'optimal'</code>}<ul>
+<li>The <code>optimize</code> keyword of <code>numpy.einsum_path</code>.</li>
+</ul>
+</li>
+<li><strong>verbose</strong> : <em>bool</em><ul>
+<li>A flag to control printing.</li>
+</ul>
+</li>
+</ul>
+<h3 id="save">save</h3>
+<pre><code class="language-python">save(filename, protocol='npz', compression=True)
+</code></pre>
+<p>Save the current generator to file.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>filename</strong> : <em>str</em><ul>
+<li>The path to save the file.</li>
+</ul>
+</li>
+<li><strong>protocol</strong> : {<code>'npz'</code>, <code>'json'</code>}<ul>
+<li>The file format to be used.</li>
+</ul>
+</li>
+<li><strong>compression</strong> : <em>bool</em><ul>
+<li>Whether to compress the resulting file or not.R</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties">properties</h3>
+<h4 id="specs">specs</h4>
+<pre><code class="language-python">specs
+</code></pre>
+<p>An array of EFP specifications. Each row represents an EFP 
+and the columns represent the quantities indicated by <code>cols</code>.</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../obs/" class="btn btn-neutral float-right" title="Observables">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../measures/" class="btn btn-neutral" title="Measures"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2017-2021 EnergyFlow Authors</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/pkomiske/EnergyFlow" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../measures/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../obs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/eftheme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

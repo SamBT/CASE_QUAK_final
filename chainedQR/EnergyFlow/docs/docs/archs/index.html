@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Patrick T. Komiske III, Eric M. Metodiev">
+  <link rel="canonical" href="https://energyflow.network/docs/archs/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Architectures - EnergyFlow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/eftheme.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Architectures";
+    var mkdocs_page_input_path = "docs/archs.md";
+    var mkdocs_page_url = "/docs/archs/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-122962541-1', 'energyflow.network');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+  <a href="../..">
+    <div class="eflogo">
+      <img src="../../img/eflogowhite.png"  class="eflogo-img"> EnergyFlow
+    </div>
+  </a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../demos/">Demos</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faqs/">FAQs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../releases/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../news/">News</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Architectures</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#archbase">ArchBase</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fit">fit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#predict">predict</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#model">model</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#efn">EFN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#eval_filters">eval_filters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_1">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#inputs">inputs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#weights">weights</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#phi">Phi</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#latent">latent</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#f">F</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#output">output</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pfn">PFN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_2">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#inputs_1">inputs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#weights_1">weights</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#phi_1">Phi</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#latent_1">latent</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#f_1">F</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#output_1">output</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cnn">CNN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dnn">DNN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linearclassifier">LinearClassifier</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../emd/">EMD</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efm/">Energy Flow Moments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efp/">Energy Flow Polynomials</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../measures/">Measures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../gen/">Multigraph Generation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../obs/">Observables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">EnergyFlow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Architectures</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="architectures">Architectures</h1>
+<p>Energy Flow Networks (EFNs) and Particle Flow Networks (PFNs) are model
+architectures designed for learning from collider events as unordered,
+variable-length sets of particles. Both EFNs and PFNs are parameterized by a
+learnable per-particle function <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span> and latent space function <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span>.</p>
+<p>An EFN takes the following form:</p>
+<div>
+<div class="MathJax_Preview">\text{EFN}=F\left(\sum_{i=1}^M z_i \Phi(\hat p_i)\right)</div>
+<script type="math/tex; mode=display">\text{EFN}=F\left(\sum_{i=1}^M z_i \Phi(\hat p_i)\right)</script>
+</div>
+<p>where <span><span class="MathJax_Preview">z_i</span><script type="math/tex">z_i</script></span> is a measure of the energy of particle <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, such as <span><span class="MathJax_Preview">z_i=p_{T,i}</span><script type="math/tex">z_i=p_{T,i}</script></span>,
+and <span><span class="MathJax_Preview">\hat p_i</span><script type="math/tex">\hat p_i</script></span> is a measure of the angular information of particle <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, such as
+<span><span class="MathJax_Preview">\hat p_i = (y_i,\phi_i)</span><script type="math/tex">\hat p_i = (y_i,\phi_i)</script></span>. Any infrared- and collinear-safe observable can be
+parameterized in this form.</p>
+<p>A PFN takes the following form:</p>
+<div>
+<div class="MathJax_Preview">\text{PFN}=F\left(\sum_{i=1}^M \Phi(p_i)\right)</div>
+<script type="math/tex; mode=display">\text{PFN}=F\left(\sum_{i=1}^M \Phi(p_i)\right)</script>
+</div>
+<p>where <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> is the information of particle <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, such as its four-momentum,
+charge, or flavor. Any observable can be parameterized in this form. See the
+<a href="https://arxiv.org/abs/1703.06114">Deep Sets</a> framework for additional 
+discussion.</p>
+<p>Since these architectures are not used by the core EnergyFlow code, and require
+the external <a href="https://www.tensorflow.org">TensorFlow</a> and <a href="http:
+//scikit-learn.org/">scikit-learn</a> libraries, they are not imported by default but must be
+explicitly imported, e.g. <code>from energyflow.archs import *</code>. EnergyFlow also
+contains several additional model architectures for ease of using common models
+that frequently appear in the intersection of particle physics and machine
+learning.</p>
+<hr />
+<h2 id="archbase">ArchBase</h2>
+<p>Base class for all architectures contained in EnergyFlow. The mechanism of
+specifying hyperparameters for all architectures is described here. Methods
+common to all architectures are documented here. Note that this class cannot
+be instantiated directly as it is an abstract base class.</p>
+<pre><code class="language-python">energyflow.archs.archbase.ArchBase(*args, **kwargs)
+</code></pre>
+<p>Accepts arbitrary arguments. Positional arguments (if present) are
+dictionaries of hyperparameters, keyword arguments (if present) are 
+hyperparameters directly. Keyword hyperparameters take precedence over
+positional hyperparameter dictionaries.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>*args</strong> : arbitrary positional arguments<ul>
+<li>Each argument is a dictionary containing hyperparameter (name, value)
+pairs.</li>
+</ul>
+</li>
+<li><strong>*kwargs</strong> : arbitrary keyword arguments<ul>
+<li>Hyperparameters as keyword arguments. Takes precedence over the 
+positional arguments.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Default NN Hyperparameters</strong></p>
+<p>Common hyperparameters that apply to all architectures except for
+<a href="#linearclassifier"><code>LinearClassifier</code></a>.</p>
+<p><strong>Compilation Options</strong></p>
+<ul>
+<li><strong>loss</strong>=<code>'categorical_crossentropy'</code> : <em>str</em><ul>
+<li>The loss function to use for the model. See the <a href="https://keras.io/losses/">Keras loss 
+function docs</a> for available loss
+functions.</li>
+</ul>
+</li>
+<li><strong>optimizer</strong>=<code>'adam'</code> : Keras optimizer or <em>str</em><ul>
+<li>A <a href="https://keras.io/optimizers/">Keras optimizer</a> instance or a
+string referring to one (in which case the default arguments are 
+used).</li>
+</ul>
+</li>
+<li><strong>metrics</strong>=<code>['accuracy']</code> : <em>list</em> of <em>str</em><ul>
+<li>The <a href="https://keras.io/metrics/">Keras metrics</a> to apply to the
+model.</li>
+</ul>
+</li>
+<li><strong>compile_opts</strong>=<code>{}</code> : <em>dict</em><ul>
+<li>Dictionary of keyword arguments to be passed on to the
+<a href="https://keras.io/models/model/#compile"><code>compile</code></a> method of the
+model. <code>loss</code>, <code>optimizer</code>, and <code>metrics</code> (see above) are included
+in this dictionary. All other values are the Keras defaults.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Output Options</strong></p>
+<ul>
+<li><strong>output_dim</strong>=<code>2</code> : <em>int</em><ul>
+<li>The output dimension of the model.</li>
+</ul>
+</li>
+<li><strong>output_act</strong>=<code>'softmax'</code> : <em>str</em> or Keras activation<ul>
+<li>Activation function to apply to the output.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Callback Options</strong></p>
+<ul>
+<li><strong>filepath</strong>=<code>None</code> : <em>str</em><ul>
+<li>The file path for where to save the model. If <code>None</code> then the
+model will not be saved.</li>
+</ul>
+</li>
+<li><strong>save_while_training</strong>=<code>True</code> : <em>bool</em><ul>
+<li>Whether the model is saved during training (using the 
+<a href="https://keras.io/callbacks/#modelcheckpoint"><code>ModelCheckpoint</code></a>
+callback) or only once training terminates. Only relevant if
+<code>filepath</code> is set.</li>
+</ul>
+</li>
+<li><strong>save_weights_only</strong>=<code>False</code> : <em>bool</em><ul>
+<li>Whether only the weights of the model or the full model are
+saved. Only relevant if <code>filepath</code> is set.</li>
+</ul>
+</li>
+<li><strong>modelcheck_opts</strong>=<code>{'save_best_only':True, 'verbose':1}</code> : <em>dict</em><ul>
+<li>Dictionary of keyword arguments to be passed on to the
+<a href="https://keras.io/callbacks/#modelcheckpoint"><code>ModelCheckpoint</code></a>
+callback, if it is present. <code>save_weights_only</code> (see above) is
+included in this dictionary. All other arguments are the Keras
+defaults.</li>
+</ul>
+</li>
+<li><strong>patience</strong>=<code>None</code> : <em>int</em><ul>
+<li>The number of epochs with no improvement after which the training
+is stopped (using the <a href="https://keras.io/
+callbacks/#earlystopping"><code>EarlyStopping</code></a> callback). If <code>None</code> then no early stopping
+is used.</li>
+</ul>
+</li>
+<li><strong>earlystop_opts</strong>=<code>{'restore_best_weights':True, 'verbose':1}</code> : <em>dict</em><ul>
+<li>Dictionary of keyword arguments to be passed on to the
+<a href="https://keras.io/callbacks/#earlystopping"><code>EarlyStopping</code></a>
+callback, if it is present. <code>patience</code> (see above) is included in
+this dictionary. All other arguments are the Keras defaults.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Flags</strong></p>
+<ul>
+<li><strong>name_layers</strong>=<code>True</code> : <em>bool</em><ul>
+<li>Whether to give the layers of the model explicit names or let
+them be named automatically. One reason to set this to <code>False</code>
+would be in order to use parts of this model in another model
+(all Keras layers in a model are required to have unique names).</li>
+</ul>
+</li>
+<li><strong>compile</strong>=<code>True</code> : <em>bool</em><ul>
+<li>Whether the model should be compiled or not.</li>
+</ul>
+</li>
+<li><strong>summary</strong>=<code>True</code> : <em>bool</em><ul>
+<li>Whether a summary should be printed or not.</li>
+</ul>
+</li>
+</ul>
+<h3 id="fit">fit</h3>
+<pre><code class="language-python">fit(*args, **kwargs)
+</code></pre>
+<p>Train the model by fitting the provided training dataset and labels.
+Transparently calls the <code>.fit()</code> method of the underlying model.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>*args</strong> : <em>numpy.ndarray</em> or <em>tensorflow.data.Dataset</em><ul>
+<li>Either the <code>X_train</code> and <code>Y_train</code> NumPy arrays or a TensorFlow
+dataset.</li>
+</ul>
+</li>
+<li><strong>kwargs</strong> : <em>dict</em><ul>
+<li>Keyword arguments passed on to the <code>.fit()</code> method of the
+underlying model. Most relevant for neural network models, where the
+<a href="https://www.tensorflow.org/api_docs/
+python/tf/keras/Model#fit">TensorFlow/Keras model docs</a> contain detailed information on the
+possible arguments.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>The return value of the the underlying model's <code>.fit()</code> method.</li>
+</ul>
+<h3 id="predict">predict</h3>
+<pre><code class="language-python">predict(X_test, **kwargs)
+</code></pre>
+<p>Evaluate the model on a dataset. Note that for the <code>LinearClassifier</code>
+this corresponds to the <code>predict_proba</code> method of the underlying 
+scikit-learn model.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>X_test</strong> : <em>numpy.ndarray</em><ul>
+<li>The dataset to evaluate the model on.</li>
+</ul>
+</li>
+<li><strong>kwargs</strong> : <em>dict</em><ul>
+<li>Keyword arguments passed on to the underlying model when
+predicting on a dataset.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>numpy.ndarray</em><ul>
+<li>The value of the model on the input dataset.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties">properties</h3>
+<h4 id="model">model</h4>
+<pre><code class="language-python">model
+</code></pre>
+<p>The underlying model held by this architecture. Note that accessing
+an attribute that the architecture does not have will resulting in
+attempting to retrieve the attribute from this model. This allows for
+interrogation of the EnergyFlow architecture in the same manner as the
+underlying model.</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>For neural network models:<ul>
+<li><code>model.layers</code> will return a list of the layers, where 
+<code>model</code> is any EnergFlow neural network.</li>
+</ul>
+</li>
+<li>For linear models:<ul>
+<li><code>model.coef_</code> will return the coefficients, where <code>model</code>
+is any EnergyFlow <code>LinearClassifier</code> instance.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="efn">EFN</h2>
+<p>Energy Flow Network (EFN) architecture.</p>
+<pre><code class="language-python">energyflow.archs.EFN(*args, **kwargs)
+</code></pre>
+<p>See <a href="#archbase"><code>ArchBase</code></a> for how to pass in hyperparameters as
+well as defaults common to all EnergyFlow neural network models.</p>
+<p><strong>Required EFN Hyperparameters</strong></p>
+<ul>
+<li><strong>input_dim</strong> : <em>int</em><ul>
+<li>The number of features for each particle.</li>
+</ul>
+</li>
+<li><strong>Phi_sizes</strong> (formerly <code>ppm_sizes</code>) : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The sizes of the dense layers in the per-particle frontend
+module <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span>. The last element will be the number of latent 
+observables that the model defines.</li>
+</ul>
+</li>
+<li><strong>F_sizes</strong> (formerly <code>dense_sizes</code>) : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The sizes of the dense layers in the backend module <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Default EFN Hyperparameters</strong></p>
+<ul>
+<li><strong>Phi_acts</strong>=<code>'relu'</code> (formerly <code>ppm_acts</code>) : {<em>tuple</em>, <em>list</em>} of
+<em>str</em> or Keras activation<ul>
+<li>Activation functions(s) for the dense layers in the 
+per-particle frontend module <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span>. A single string or activation
+layer will apply the same activation to all layers. Keras advanced
+activation layers are also accepted, either as strings (which use
+the default arguments) or as Keras <code>Layer</code> instances. If passing a
+single <code>Layer</code> instance, be aware that this layer will be used for
+all activations and may introduce weight sharing (such as with 
+<code>PReLU</code>); it is recommended in this case to pass as many activations
+as there are layers in the model. See the <a href="https://keras.io/activations/">Keras activations 
+docs</a> for more detail.</li>
+</ul>
+</li>
+<li><strong>F_acts</strong>=<code>'relu'</code> (formerly <code>dense_acts</code>) : {<em>tuple</em>, <em>list</em>} of
+<em>str</em> or Keras activation<ul>
+<li>Activation functions(s) for the dense layers in the 
+backend module <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span>. A single string or activation layer will apply
+the same activation to all layers.</li>
+</ul>
+</li>
+<li><strong>Phi_k_inits</strong>=<code>'he_uniform'</code> (formerly <code>ppm_k_inits</code>) : {<em>tuple</em>,
+<em>list</em>} of <em>str</em> or Keras initializer<ul>
+<li>Kernel initializers for the dense layers in the per-particle
+frontend module <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span>. A single string will apply the same
+initializer to all layers. See the <a href="https:
+//keras.io/initializers/">Keras initializer docs</a> for more detail.</li>
+</ul>
+</li>
+<li><strong>F_k_inits</strong>=<code>'he_uniform'</code> (formerly <code>dense_k_inits</code>) : {<em>tuple</em>,
+<em>list</em>} of <em>str</em> or Keras initializer<ul>
+<li>Kernel initializers for the dense layers in the backend 
+module <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span>. A single string will apply the same initializer 
+to all layers.</li>
+</ul>
+</li>
+<li><strong>latent_dropout</strong>=<code>0</code> : <em>float</em><ul>
+<li>Dropout rates for the summation layer that defines the
+value of the latent observables on the inputs. See the <a href="https://keras.io/layers/core/#dropout">Keras
+Dropout layer</a> for more 
+detail.</li>
+</ul>
+</li>
+<li><strong>F_dropouts</strong>=<code>0</code> (formerly <code>dense_dropouts</code>) : {<em>tuple</em>, <em>list</em>}
+of <em>float</em><ul>
+<li>Dropout rates for the dense layers in the backend module <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span>. 
+A single float will apply the same dropout rate to all dense layers.</li>
+</ul>
+</li>
+<li><strong>Phi_l2_regs</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li><span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span>-regulatization strength for both the weights and biases
+of the layers in the <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span> network. A single float will apply the
+same <span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span>-regulatization to all layers.</li>
+</ul>
+</li>
+<li><strong>F_l2_regs</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li><span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span>-regulatization strength for both the weights and biases
+of the layers in the <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> network. A single float will apply the
+same <span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span>-regulatization to all layers.</li>
+</ul>
+</li>
+<li><strong>mask_val</strong>=<code>0</code> : <em>float</em><ul>
+<li>The value for which particles with all features set equal to
+this value will be ignored. The <a href="https://
+keras.io/layers/core/#masking">Keras Masking layer</a> appears to have issues masking
+the biases of a network, so this has been implemented in a
+custom (and correct) manner since version <code>0.12.0</code>.</li>
+</ul>
+</li>
+<li><strong>num_global_features</strong>=<code>None</code> : <em>int</em><ul>
+<li>Number of additional features to be concatenated with the latent
+space observables to form the input to F. If not <code>None</code>, then the
+features are to be provided at the end of the list of inputs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="eval_filters">eval_filters</h3>
+<pre><code class="language-python">eval_filters(patch, n=100, prune=True)
+</code></pre>
+<p>Evaluates the latent space filters of this model on a patch of the 
+two-dimensional geometric input space.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>patch</strong> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li>Specifies the patch of the geometric input space to be evaluated.
+A list of length 4 is interpretted as <code>[xmin, ymin, xmax, ymax]</code>.
+Passing a single float <code>R</code> is equivalent to <code>[-R,-R,R,R]</code>.</li>
+</ul>
+</li>
+<li><strong>n</strong> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The number of grid points on which to evaluate the filters. A list 
+of length 2 is interpretted as <code>[nx, ny]</code> where <code>nx</code> is the number of
+points along the x (or first) dimension and <code>ny</code> is the number of points
+along the y (or second) dimension.</li>
+</ul>
+</li>
+<li><strong>prune</strong> : <em>bool</em><ul>
+<li>Whether to remove filters that are all zero (which happens sometimes
+due to dying ReLUs).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li>(<em>numpy.ndarray</em>, <em>numpy.ndarray</em>, <em>numpy.ndarray</em>)<ul>
+<li>Returns three arrays, <code>(X, Y, Z)</code>, where <code>X</code> and <code>Y</code> have shape <code>(nx, ny)</code> 
+and are arrays of the values of the geometric inputs in the specified patch.
+<code>Z</code> has shape <code>(num_filters, nx, ny)</code> and is the value of the different
+filters at each point.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties_1">properties</h3>
+<h4 id="inputs">inputs</h4>
+<pre><code class="language-python">inputs
+</code></pre>
+<p>List of input tensors to the model. EFNs have two input tensors:
+<code>inputs[0]</code> corresponds to the <code>zs</code> input and <code>inputs[1]</code> corresponds
+to the <code>phats</code> input.</p>
+<h4 id="weights">weights</h4>
+<pre><code class="language-python">weights
+</code></pre>
+<p>Weight tensor for the model. This is the <code>zs</code> input where entries
+equal to <code>mask_val</code> have been set to zero.</p>
+<h4 id="phi">Phi</h4>
+<pre><code class="language-python">Phi
+</code></pre>
+<p>List of tensors corresponding to the layers in the <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span> network.</p>
+<h4 id="latent">latent</h4>
+<pre><code class="language-python">latent
+</code></pre>
+<p>List of tensors corresponding to the summation layer in the
+network, including any dropout layer if present.</p>
+<h4 id="f">F</h4>
+<pre><code class="language-python">F
+</code></pre>
+<p>List of tensors corresponding to the layers in the <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> network.</p>
+<h4 id="output">output</h4>
+<pre><code class="language-python">output
+</code></pre>
+<p>Output tensor for the model.</p>
+<hr />
+<h2 id="pfn">PFN</h2>
+<p>Particle Flow Network (PFN) architecture. Accepts the same 
+hyperparameters as the <a href="#EFN"><code>EFN</code></a>.</p>
+<pre><code class="language-python">energyflow.archs.PFN(*args, **kwargs)
+</code></pre>
+<h3 id="properties_2">properties</h3>
+<h4 id="inputs_1">inputs</h4>
+<pre><code class="language-python">inputs
+</code></pre>
+<p>List of input tensors to the model. PFNs have one input tensor
+corresponding to the <code>ps</code> input.</p>
+<h4 id="weights_1">weights</h4>
+<pre><code class="language-python">weights
+</code></pre>
+<p>Weight tensor for the model. A weight of <code>0</code> is assigned to any
+particle which has all features equal to <code>mask_val</code>, and <code>1</code> is
+assigned otherwise.</p>
+<h4 id="phi_1">Phi</h4>
+<pre><code class="language-python">Phi
+</code></pre>
+<p>List of tensors corresponding to the layers in the <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span> network.</p>
+<h4 id="latent_1">latent</h4>
+<pre><code class="language-python">latent
+</code></pre>
+<p>List of tensors corresponding to the summation layer in the
+network, including any dropout layer if present.</p>
+<h4 id="f_1">F</h4>
+<pre><code class="language-python">F
+</code></pre>
+<p>List of tensors corresponding to the layers in the <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> network.</p>
+<h4 id="output_1">output</h4>
+<pre><code class="language-python">output
+</code></pre>
+<p>Output tensor for the model.</p>
+<hr />
+<h2 id="cnn">CNN</h2>
+<p>Convolutional Neural Network architecture.</p>
+<pre><code class="language-python">energyflow.archs.CNN(*args, **kwargs)
+</code></pre>
+<p>See <a href="#archbase"><code>ArchBase</code></a> for how to pass in hyperparameters as
+well as defaults common to all EnergyFlow neural network models.</p>
+<p><strong>Required CNN Hyperparameters</strong></p>
+<ul>
+<li><strong>input_shape</strong> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The shape of a single jet image. Assuming that <code>data_format</code>
+is set to <code>channels_first</code>, this is <code>(nb_chan,npix,npix)</code>.</li>
+</ul>
+</li>
+<li><strong>filter_sizes</strong> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The size of the filters, which are taken to be square, in each 
+convolutional layer of the network. The length of the list will be
+the number of convolutional layers in the network.</li>
+</ul>
+</li>
+<li><strong>num_filters</strong> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The number of filters in each convolutional layer. The length of 
+<code>num_filters</code> must match that of <code>filter_sizes</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Default CNN Hyperparameters</strong></p>
+<ul>
+<li><strong>dense_sizes</strong>=<code>None</code> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The sizes of the dense layer backend. A value of <code>None</code> is 
+equivalent to an empty list.</li>
+</ul>
+</li>
+<li><strong>pool_sizes</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>Size of maxpooling filter, taken to be a square. A value of 
+<code>0</code> will not use maxpooling.</li>
+</ul>
+</li>
+<li><strong>conv_acts</strong>=<code>'relu'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em>  or Keras activation<ul>
+<li>Activation function(s) for the conv layers. A single string or
+activation layer will apply the same activation to all conv layers.
+Keras advanced activation layers are also accepted, either as
+strings (which use the default arguments) or as Keras <code>Layer</code> 
+instances. If passing a single <code>Layer</code> instance, be aware that this
+layer will be used for all activations and may introduce weight 
+sharing (such as with <code>PReLU</code>); it is recommended in this case to 
+pass as many activations as there are layers in the model.See the
+<a href="https://keras.io/activations/">Keras activations docs</a> for more 
+detail.</li>
+</ul>
+</li>
+<li><strong>dense_acts</strong>=<code>'relu'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em>  or Keras activation<ul>
+<li>Activation functions(s) for the dense layers. A single string 
+or activation layer will apply the same activation to all dense 
+layers.</li>
+</ul>
+</li>
+<li><strong>conv_k_inits</strong>=<code>'he_uniform'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em> or Keras initializer<ul>
+<li>Kernel initializers for the convolutional layers. A single
+string will apply the same initializer to all layers. See the
+<a href="https://keras.io/initializers/">Keras initializer docs</a> for 
+more detail.</li>
+</ul>
+</li>
+<li><strong>dense_k_inits</strong>=<code>'he_uniform'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em> or Keras initializer<ul>
+<li>Kernel initializers for the dense layers. A single string will 
+apply the same initializer to all layers.</li>
+</ul>
+</li>
+<li><strong>conv_dropouts</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li>Dropout rates for the convolutional layers. A single float will
+apply the same dropout rate to all conv layers. See the <a href="https://keras.io/layers/core/#dropout">Keras
+Dropout layer</a> for more 
+detail.</li>
+</ul>
+</li>
+<li><strong>num_spatial2d_dropout</strong>=<code>0</code> : <em>int</em><ul>
+<li>The number of convolutional layers, starting from the beginning
+of the model, for which to apply <a href="https://keras
+.io/layers/core/#spatialdropout2d">SpatialDropout2D</a> instead of Dropout.</li>
+</ul>
+</li>
+<li><strong>dense_dropouts</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li>Dropout rates for the dense layers. A single float will apply 
+the same dropout rate to all dense layers.</li>
+</ul>
+</li>
+<li><strong>paddings</strong>=<code>'valid'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em><ul>
+<li>Controls how the filters are convoled with the inputs. See
+the <a href="https://keras.io/layers/convolutional/#conv2d">Keras Conv2D layer</a> 
+for more detail.</li>
+</ul>
+</li>
+<li><strong>data_format</strong>=<code>'channels_last'</code> : {<code>'channels_first'</code>, <code>'channels_last'</code>}<ul>
+<li>Sets which axis is expected to contain the different channels.
+<code>'channels_first'</code> appears to have issues with newer versions of 
+tensorflow, so prefer <code>'channels_last'</code>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="dnn">DNN</h2>
+<p>Dense Neural Network architecture.</p>
+<pre><code class="language-python">energyflow.archs.DNN(*args, **kwargs)
+</code></pre>
+<p>See <a href="#archbase"><code>ArchBase</code></a> for how to pass in hyperparameters as
+well as defaults common to all EnergyFlow neural network models.</p>
+<p><strong>Required DNN Hyperparameters</strong></p>
+<ul>
+<li><strong>input_dim</strong> : <em>int</em><ul>
+<li>The number of inputs to the model.</li>
+</ul>
+</li>
+<li><strong>dense_sizes</strong> : {<em>tuple</em>, <em>list</em>} of <em>int</em><ul>
+<li>The number of nodes in the dense layers of the model.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Default DNN Hyperparameters</strong></p>
+<ul>
+<li><strong>acts</strong>=<code>'relu'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em> or Keras activation<ul>
+<li>Activation functions(s) for the dense layers. A single string or
+activation layer will apply the same activation to all dense layers.
+Keras advanced activation layers are also accepted, either as
+strings (which use the default arguments) or as Keras <code>Layer</code> 
+instances. If passing a single <code>Layer</code> instance, be aware that this
+layer will be used for all activations and may introduce weight 
+sharing (such as with <code>PReLU</code>); it is recommended in this case to 
+pass as many activations as there are layers in the model.See the
+<a href="https://keras.io/activations/">Keras activations docs</a> for more 
+detail.</li>
+</ul>
+</li>
+<li><strong>k_inits</strong>=<code>'he_uniform'</code> : {<em>tuple</em>, <em>list</em>} of <em>str</em> or Keras 
+initializer<ul>
+<li>Kernel initializers for the dense layers. A single string 
+will apply the same initializer to all layers. See the
+<a href="https://keras.io/initializers/">Keras initializer docs</a> for 
+more detail.</li>
+</ul>
+</li>
+<li><strong>dropouts</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li>Dropout rates for the dense layers. A single float will
+apply the same dropout rate to all layers. See the <a href="https://keras.io/layers/core/#dropout">Keras
+Dropout layer</a> for more 
+detail.</li>
+</ul>
+</li>
+<li><strong>l2_regs</strong>=<code>0</code> : {<em>tuple</em>, <em>list</em>} of <em>float</em><ul>
+<li><span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span>-regulatization strength for both the weights and biases
+of the dense layers. A single float will apply the same
+<span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span>-regulatization to all layers.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="linearclassifier">LinearClassifier</h2>
+<p>Linear classifier that can be either Fisher's linear discriminant
+or logistic regression. Relies on the <a href="https://scikit-learn.org/">scikit-learn</a>
+implementations of these classifiers.</p>
+<pre><code class="language-python">energyflow.archs.LinearClassifier(*args, **kwargs)
+</code></pre>
+<p>See <a href="#archbase"><code>ArchBase</code></a> for how to pass in hyperparameters.</p>
+<p><strong>Default Hyperparameters</strong></p>
+<ul>
+<li><strong>linclass_type</strong>=<code>'lda'</code> : {<code>'lda'</code>, <code>'lr'</code>}<ul>
+<li>Controls which type of linear classifier is used. <code>'lda'</code>
+corresponds to <a href="http://scikit-
+learn.org/stable/modules/generated/sklearn.discriminant_analysis.
+LinearDiscriminantAnalysis.html"><code>LinearDisciminantAnalysis</code></a> and <code>'lr'</code> to <a href="http://scikit-learn.org/stable/modules/generated/
+sklearn.linear_model.LogisticRegression.html"><code>Logistic
+Regression</code></a>. If using <code>'lr'</code>
+all arguments are passed on directly to the scikit-learn
+class.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Linear Discriminant Analysis Hyperparameters</strong></p>
+<ul>
+<li><strong>solver</strong>=<code>'svd'</code> : {<code>'svd'</code>, <code>'lsqr'</code>, <code>'eigen'</code>}<ul>
+<li>Which LDA solver to use.</li>
+</ul>
+</li>
+<li><strong>tol</strong>=<code>1e-12</code> : <em>float</em><ul>
+<li>Threshold used for rank estimation. Notably not a
+convergence parameter.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Logistic Regression Hyperparameters</strong></p>
+<ul>
+<li><strong>LR_hps</strong>=<code>{}</code> : <em>dict</em><ul>
+<li>Dictionary of keyword arguments to pass on to the underlying
+<code>LogisticRegression</code> model.</li>
+</ul>
+</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../datasets/" class="btn btn-neutral float-right" title="Datasets">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../news/" class="btn btn-neutral" title="News"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2017-2021 EnergyFlow Authors</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/pkomiske/EnergyFlow" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../news/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../datasets/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/eftheme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

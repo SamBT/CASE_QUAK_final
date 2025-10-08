@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Patrick T. Komiske III, Eric M. Metodiev">
+  <link rel="canonical" href="https://energyflow.network/docs/obs/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Observables - EnergyFlow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/eftheme.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Observables";
+    var mkdocs_page_input_path = "docs/obs.md";
+    var mkdocs_page_url = "/docs/obs/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-122962541-1', 'energyflow.network');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+  <a href="../..">
+    <div class="eflogo">
+      <img src="../../img/eflogowhite.png"  class="eflogo-img"> EnergyFlow
+    </div>
+  </a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../demos/">Demos</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faqs/">FAQs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../releases/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../news/">News</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../archs/">Architectures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../emd/">EMD</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efm/">Energy Flow Moments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../efp/">Energy Flow Polynomials</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../measures/">Measures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../gen/">Multigraph Generation</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Observables</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#image_activity">image_activity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#zg">zg</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#zg_from_pj">zg_from_pj</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#d2">D2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compute">compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#batch_compute">batch_compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#efpset">efpset</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c2">C2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compute_1">compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#batch_compute_1">batch_compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_1">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#efpset_1">efpset</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c3">C3</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compute_2">compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#batch_compute_2">batch_compute</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_2">properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#efpset_2">efpset</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">EnergyFlow</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Observables</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="observables">Observables</h1>
+<p>Implementations of come collider physics observables. Some observables
+require the <a href="http://fastjet.fr/">FastJet</a> Python interface to be importable;
+if it's not, no warnings or errors will be issued, the observables will simply
+not be included in this module.</p>
+<hr />
+<h2 id="image_activity">image_activity</h2>
+<pre><code class="language-python">energyflow.image_activity(ptyphis, f=0.95, R=1.0, npix=33, center=None, axis=None)
+</code></pre>
+<p>Image activity, also known as <span><span class="MathJax_Preview">N_f</span><script type="math/tex">N_f</script></span>, is the minimum number of pixels
+in an image that contain a fraction <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> of the total pT.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>ptyphis</strong> : <em>2d numpy.ndarray</em><ul>
+<li>Array of particles in hadronic coordinates; the mass is optional
+since it is not used in the computation of this observable.</li>
+</ul>
+</li>
+<li><strong>f</strong> : <em>float</em><ul>
+<li>The fraction <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> of total pT that is to be contained by the pixels.</li>
+</ul>
+</li>
+<li><strong>R</strong> : <em>float</em><ul>
+<li>Half of the length of one side of the square space to tile with
+pixels when forming the image. For a conical jet, this should typically
+be the jet radius.</li>
+</ul>
+</li>
+<li><strong>npix</strong> : <em>int</em><ul>
+<li>The number of pixels along one dimension of the image, such that the
+image has shape <code>(npix,npix)</code>.</li>
+</ul>
+</li>
+<li><strong>center</strong> : <em>str</em> or <code>None</code><ul>
+<li>If not <code>None</code>, the centering scheme to use to center the particles
+prior to calculating the image activity. See the option of the same
+name for <a href="/docs/utils/#center_ptyphims"><code>center_ptyphims</code></a>.</li>
+</ul>
+</li>
+<li><strong>axis</strong> : <em>numpy.ndarray</em> or <code>None</code><ul>
+<li>If not <code>None</code>, the <code>[y,phi]</code> values to use for centering. If <code>None</code>,
+the center of the image will be at <code>(0,0)</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>int</em><ul>
+<li>The image activity defined for the specified image paramters.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="zg">zg</h2>
+<pre><code class="language-python">energyflow.zg(ptyphims, zcut=0.1, beta=0, R=1.0, algorithm='ca')
+</code></pre>
+<p>Groomed momentum fraction of a jet, as calculated on an array of
+particles in hadronic coordinates. First, the particles are converted
+to FastJet PseudoJets and clustered according to the specified
+algorithm. Second, the jet is groomed according to the specified
+SoftDrop parameters and the momentum fraction of the surviving pair of
+Pseudojets is computed. See the <a href="https://arxiv.org/abs/
+1402.2657">SoftDrop paper</a> for a complete description of SoftDrop.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>ptyphims</strong> : <em>numpy.ndarray</em><ul>
+<li>An array of particles in hadronic coordinates that will be
+clustered into a single jet and groomed.</li>
+</ul>
+</li>
+<li><strong>zcut</strong> : <em>float</em><ul>
+<li>The <span><span class="MathJax_Preview">z_{\rm cut}</span><script type="math/tex">z_{\rm cut}</script></span> parameter of SoftDrop. Should be between <code>0</code>
+and <code>1</code>.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>int</em> or <em>float</em><ul>
+<li>The <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> parameter of SoftDrop.</li>
+</ul>
+</li>
+<li><strong>R</strong> : <em>float</em><ul>
+<li>The jet radius to use for the grooming. Only relevant if <code>beta!=0</code>.</li>
+</ul>
+</li>
+<li><strong>algorithm</strong> : {'kt', 'ca', 'antikt'}<ul>
+<li>The jet algorithm to use when clustering the particles. Same as
+the argument of the same name of <a href="/docs/utils/#cluster"><code>cluster</code></a>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>float</em><ul>
+<li>The groomed momentum fraction of the given jet.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="zg_from_pj">zg_from_pj</h2>
+<pre><code class="language-python">energyflow.zg_from_pj(pseudojet, zcut=0.1, beta=0, R=1.0)
+</code></pre>
+<p>Groomed momentum fraction <span><span class="MathJax_Preview">z_g</span><script type="math/tex">z_g</script></span>, as calculated on an ungroomed (but
+already clustered) FastJet PseudoJet object. First, the jet is groomed
+according to the specified SoftDrop parameters and then the momentum
+fraction of the surviving pair of Pseudojets is computed. See the
+<a href="https://arxiv.org/abs/1402.2657">SoftDrop paper</a> for a complete
+description of SoftDrop. This version of <span><span class="MathJax_Preview">z_g</span><script type="math/tex">z_g</script></span> is provided in addition
+to the above function so that a jet does not need to be reclustered if
+multiple grooming parameters are to be used.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>pseudojet</strong> : <em>fastjet.PseudoJet</em><ul>
+<li>A FastJet PseudoJet that has been obtained from a suitable
+clustering (typically Cambridge/Aachen for SoftDrop).</li>
+</ul>
+</li>
+<li><strong>zcut</strong> : <em>float</em><ul>
+<li>The <span><span class="MathJax_Preview">z_{\rm cut}</span><script type="math/tex">z_{\rm cut}</script></span> parameter of SoftDrop. Should be between <code>0</code>
+and <code>1</code>.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>int</em> or <em>float</em><ul>
+<li>The <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> parameter of SoftDrop.</li>
+</ul>
+</li>
+<li><strong>R</strong> : <em>float</em><ul>
+<li>The jet radius to use for the grooming. Only relevant if <code>beta!=0</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>float</em><ul>
+<li>The groomed momentum fraction of the given jet.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="d2">D2</h2>
+<p>Ratio of EFPs (specifically, energy correlation functions) designed to
+tag two prong signals. In graphs, the formula is:</p>
+<p><img src="https://github.com/pkomiske/EnergyFlow/raw/images/D2.png" 
+class="obs_center" width="20%"/></p>
+<p>For additional information, see the <a href="https://arxiv.org/
+abs/1409.6298">original paper</a>.</p>
+<pre><code class="language-python">energyflow.D2(measure='hadr', beta=2, strassen=False, reg=0., kappa=1, normed=True,
+              coords=None, check_input=True)
+</code></pre>
+<p>Since a <code>D2</code> defines and holds a <code>Measure</code> instance, all <code>Measure</code>
+keywords are accepted.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>measure</strong> : {<code>'hadr'</code>, <code>'hadrdot'</code>, <code>'hadrefm'</code>, <code>'ee'</code>, <code>'eeefm'</code>}<ul>
+<li>The choice of measure. See <a href="../measures">Measures</a> for additional
+info.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>float</em><ul>
+<li>The parameter <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> appearing in the measure. Must be greater
+than zero.</li>
+</ul>
+</li>
+<li><strong>strassen</strong> : <em>bool</em><ul>
+<li>Whether to use matrix multiplication to speed up the evaluation.
+Not recommended when <span><span class="MathJax_Preview">\beta=2</span><script type="math/tex">\beta=2</script></span> since EFMs are faster.</li>
+</ul>
+</li>
+<li><strong>reg</strong> : <em>float</em><ul>
+<li>A regularizing value to be added to the denominator in the event
+that it is zero. Should typically be something less than 1e-30.</li>
+</ul>
+</li>
+<li><strong>kappa</strong> : {<em>float</em>, <code>'pf'</code>}<ul>
+<li>If a number, the energy weighting parameter <span><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span>. If <code>'pf'</code>,
+use <span><span class="MathJax_Preview">\kappa=v-1</span><script type="math/tex">\kappa=v-1</script></span> where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the valency of the vertex.</li>
+</ul>
+</li>
+<li><strong>normed</strong> : <em>bool</em><ul>
+<li>Controls normalization of the energies in the measure.</li>
+</ul>
+</li>
+<li><strong>coords</strong> : {<code>'ptyphim'</code>, <code>'epxpypz'</code>, <code>None</code>}<ul>
+<li>Controls which coordinates are assumed for the input. See 
+<a href="../measures">Measures</a> for additional info.</li>
+</ul>
+</li>
+<li><strong>check_input</strong> : <em>bool</em><ul>
+<li>Whether to check the type of the input each time or assume the
+first input type.</li>
+</ul>
+</li>
+</ul>
+<h3 id="compute">compute</h3>
+<pre><code class="language-python">compute(event=None, zs=None, thetas=None, nhats=None)
+</code></pre>
+<p>Computes the value of the observable on a single event. Note that
+the observable object is also callable, in which case this method is
+invoked.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>event</strong> : 2-d array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The event as an array of particles in the coordinates specified
+by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>zs</strong> : 1-d array_like<ul>
+<li>If present, <code>thetas</code> must also be present, and <code>zs</code> is used in place 
+of the energies of an event.</li>
+</ul>
+</li>
+<li><strong>thetas</strong> : 2-d array_like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>thetas</code> is used in place 
+of the pairwise angles of an event.</li>
+</ul>
+</li>
+<li><strong>nhats</strong> : 2-d array like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>nhats</code> is used in place
+of the scaled particle momenta. Only applicable when EFMs are being
+used.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>float</em><ul>
+<li>The observable value.</li>
+</ul>
+</li>
+</ul>
+<h3 id="batch_compute">batch_compute</h3>
+<pre><code class="language-python">batch_compute(events, n_jobs=None)
+</code></pre>
+<p>Computes the value of the observable on several events.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>events</strong> : array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The events as an array of arrays of particles in coordinates
+matching those anticipated by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>n_jobs</strong> : <em>int</em> or <code>None</code><ul>
+<li>The number of worker processes to use. A value of <code>None</code> will
+use as many processes as there are CPUs on the machine.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>1-d numpy.ndarray</em><ul>
+<li>A vector of the observable values for each event.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties">properties</h3>
+<h4 id="efpset">efpset</h4>
+<pre><code class="language-python">efpset
+</code></pre>
+<p><code>EFPSet</code> held by the object to compute fundamental EFP values.</p>
+<hr />
+<h2 id="c2">C2</h2>
+<p>Ratio of Energy Correlation Functions designed to tag two prong signals.
+In graphs, the formula is:</p>
+<p><img src="https://github.com/pkomiske/EnergyFlow/raw/images/C2.png" 
+class="obs_center" width="20%"/></p>
+<p>For additional information, see the <a href="https://arxiv.org/
+abs/1305.0007">original paper</a>.</p>
+<pre><code class="language-python">energyflow.C2(measure='hadr', beta=2, strassen=False, reg=0., kappa=1, normed=True,
+              coords=None, check_input=True)
+</code></pre>
+<p>Since a <code>C2</code> defines and holds a <code>Measure</code> instance, all <code>Measure</code>
+keywords are accepted.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>measure</strong> : {<code>'hadr'</code>, <code>'hadrdot'</code>, <code>'hadrefm'</code>, <code>'ee'</code>, <code>'eeefm'</code>}<ul>
+<li>The choice of measure. See <a href="../measures">Measures</a> for additional
+info.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>float</em><ul>
+<li>The parameter <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> appearing in the measure. Must be greater
+than zero.</li>
+</ul>
+</li>
+<li><strong>strassen</strong> : <em>bool</em><ul>
+<li>Whether to use matrix multiplication to speed up the evaluation.
+Not recommended when <span><span class="MathJax_Preview">\beta=2</span><script type="math/tex">\beta=2</script></span> since EFMs are faster.</li>
+</ul>
+</li>
+<li><strong>reg</strong> : <em>float</em><ul>
+<li>A regularizing value to be added to the denominator in the event
+that it is zero. Should typically be something less than 1e-30.</li>
+</ul>
+</li>
+<li><strong>kappa</strong> : {<em>float</em>, <code>'pf'</code>}<ul>
+<li>If a number, the energy weighting parameter <span><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span>. If <code>'pf'</code>,
+use <span><span class="MathJax_Preview">\kappa=v-1</span><script type="math/tex">\kappa=v-1</script></span> where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the valency of the vertex.</li>
+</ul>
+</li>
+<li><strong>normed</strong> : <em>bool</em><ul>
+<li>Controls normalization of the energies in the measure.</li>
+</ul>
+</li>
+<li><strong>coords</strong> : {<code>'ptyphim'</code>, <code>'epxpypz'</code>, <code>None</code>}<ul>
+<li>Controls which coordinates are assumed for the input. See 
+<a href="../measures">Measures</a> for additional info.</li>
+</ul>
+</li>
+<li><strong>check_input</strong> : <em>bool</em><ul>
+<li>Whether to check the type of the input each time or assume the
+first input type.</li>
+</ul>
+</li>
+</ul>
+<h3 id="compute_1">compute</h3>
+<pre><code class="language-python">compute(event=None, zs=None, thetas=None, nhats=None)
+</code></pre>
+<p>Computes the value of the observable on a single event. Note that
+the observable object is also callable, in which case this method is
+invoked.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>event</strong> : 2-d array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The event as an array of particles in the coordinates specified
+by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>zs</strong> : 1-d array_like<ul>
+<li>If present, <code>thetas</code> must also be present, and <code>zs</code> is used in place 
+of the energies of an event.</li>
+</ul>
+</li>
+<li><strong>thetas</strong> : 2-d array_like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>thetas</code> is used in place 
+of the pairwise angles of an event.</li>
+</ul>
+</li>
+<li><strong>nhats</strong> : 2-d array like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>nhats</code> is used in place
+of the scaled particle momenta. Only applicable when EFMs are being
+used.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>float</em><ul>
+<li>The observable value.</li>
+</ul>
+</li>
+</ul>
+<h3 id="batch_compute_1">batch_compute</h3>
+<pre><code class="language-python">batch_compute(events, n_jobs=None)
+</code></pre>
+<p>Computes the value of the observable on several events.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>events</strong> : array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The events as an array of arrays of particles in coordinates
+matching those anticipated by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>n_jobs</strong> : <em>int</em> or <code>None</code><ul>
+<li>The number of worker processes to use. A value of <code>None</code> will
+use as many processes as there are CPUs on the machine.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>1-d numpy.ndarray</em><ul>
+<li>A vector of the observable values for each event.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties_1">properties</h3>
+<h4 id="efpset_1">efpset</h4>
+<pre><code class="language-python">efpset
+</code></pre>
+<p><code>EFPSet</code> held by the object to compute fundamental EFP values.</p>
+<hr />
+<h2 id="c3">C3</h2>
+<p>Ratio of Energy Correlation Functions designed to tag three prong
+signals. In graphs, the formula is:</p>
+<p><img src="https://github.com/pkomiske/EnergyFlow/raw/images/C3.png" 
+class="obs_center" width="30%"/></p>
+<p>For additional information, see the <a href="https://arxiv.org/
+abs/1305.0007">original paper</a>.</p>
+<pre><code class="language-python">energyflow.C3(measure='hadr', beta=2, reg=0., kappa=1, normed=True,
+              coords=None, check_input=True)
+</code></pre>
+<p>Since a <code>D2</code> defines and holds a <code>Measure</code> instance, all <code>Measure</code>
+keywords are accepted.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>measure</strong> : {<code>'hadr'</code>, <code>'hadrdot'</code>, <code>'hadrefm'</code>, <code>'ee'</code>, <code>'eeefm'</code>}<ul>
+<li>The choice of measure. See <a href="../measures">Measures</a> for additional
+info.</li>
+</ul>
+</li>
+<li><strong>beta</strong> : <em>float</em><ul>
+<li>The parameter <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> appearing in the measure. Must be greater
+than zero.</li>
+</ul>
+</li>
+<li><strong>reg</strong> : <em>float</em><ul>
+<li>A regularizing value to be added to the denominator in the event
+that it is zero. Should typically be something less than 1e-30.</li>
+</ul>
+</li>
+<li><strong>kappa</strong> : {<em>float</em>, <code>'pf'</code>}<ul>
+<li>If a number, the energy weighting parameter <span><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span>. If <code>'pf'</code>,
+use <span><span class="MathJax_Preview">\kappa=v-1</span><script type="math/tex">\kappa=v-1</script></span> where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the valency of the vertex.</li>
+</ul>
+</li>
+<li><strong>normed</strong> : <em>bool</em><ul>
+<li>Controls normalization of the energies in the measure.</li>
+</ul>
+</li>
+<li><strong>coords</strong> : {<code>'ptyphim'</code>, <code>'epxpypz'</code>, <code>None</code>}<ul>
+<li>Controls which coordinates are assumed for the input. See 
+<a href="../measures">Measures</a> for additional info.</li>
+</ul>
+</li>
+<li><strong>check_input</strong> : <em>bool</em><ul>
+<li>Whether to check the type of the input each time or assume the
+first input type.</li>
+</ul>
+</li>
+</ul>
+<h3 id="compute_2">compute</h3>
+<pre><code class="language-python">compute(event=None, zs=None, thetas=None, nhats=None)
+</code></pre>
+<p>Computes the value of the observable on a single event. Note that
+the observable object is also callable, in which case this method is
+invoked.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>event</strong> : 2-d array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The event as an array of particles in the coordinates specified
+by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>zs</strong> : 1-d array_like<ul>
+<li>If present, <code>thetas</code> must also be present, and <code>zs</code> is used in place 
+of the energies of an event.</li>
+</ul>
+</li>
+<li><strong>thetas</strong> : 2-d array_like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>thetas</code> is used in place 
+of the pairwise angles of an event.</li>
+</ul>
+</li>
+<li><strong>nhats</strong> : 2-d array like<ul>
+<li>If present, <code>zs</code> must also be present, and <code>nhats</code> is used in place
+of the scaled particle momenta. Only applicable when EFMs are being
+used.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>float</em><ul>
+<li>The observable value.</li>
+</ul>
+</li>
+</ul>
+<h3 id="batch_compute_2">batch_compute</h3>
+<pre><code class="language-python">batch_compute(events, n_jobs=None)
+</code></pre>
+<p>Computes the value of the observable on several events.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>events</strong> : array_like or <code>fastjet.PseudoJet</code><ul>
+<li>The events as an array of arrays of particles in coordinates
+matching those anticipated by <code>coords</code>.</li>
+</ul>
+</li>
+<li><strong>n_jobs</strong> : <em>int</em> or <code>None</code><ul>
+<li>The number of worker processes to use. A value of <code>None</code> will
+use as many processes as there are CPUs on the machine.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><em>1-d numpy.ndarray</em><ul>
+<li>A vector of the observable values for each event.</li>
+</ul>
+</li>
+</ul>
+<h3 id="properties_2">properties</h3>
+<h4 id="efpset_2">efpset</h4>
+<pre><code class="language-python">efpset
+</code></pre>
+<p><code>EFPSet</code> held by the object to compute fundamental EFP values.</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../utils/" class="btn btn-neutral float-right" title="Utils">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../gen/" class="btn btn-neutral" title="Multigraph Generation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2017-2021 EnergyFlow Authors</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/pkomiske/EnergyFlow" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../gen/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../utils/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/eftheme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

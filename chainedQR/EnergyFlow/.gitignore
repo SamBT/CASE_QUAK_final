@@ -1,0 +1,38 @@
+**/__pycache__
+.ipynb_checkpoints
+clean.sh
+dist/
+.DS_Store
+.eggs/
+*.pyc
+test.npz
+EnergyFlow.egg-info
+plan.jpg
+.cache
+build
+scrap
+Energy\ Flow.sublime*
+tmp/
+bin/
+*.nb
+.pytest_cache
+py2/
+.dropbox
+*sublime*
+taco
+Moments
+Networks
+Polynomials
+datasets/
+!energyflow/datasets
+!docs/docs/datasets
+!EnergyFlow Demo.ipynb
+!EMD Demo.ipynb
+keras/
+*test_model.h5
+Icon?
+fastjet-3.3.4
+*.o
+*.so
+*.a
+**/.svn
